@@ -1,0 +1,55 @@
+
+
+{ config, pkgs, ... }:
+
+{
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    fastfetch
+    fish
+    git
+    nano
+    python3Full
+    starship
+    wget
+
+    dracula-theme
+    fantasque-sans-mono
+
+    warp-terminal
+    vscode-with-extensions
+    vscode-extensions.redhat.ansible
+    vscode-extensions.redhat.java
+    vscode-extensions.redhat.vscode-yaml
+    vscode-extensions.svelte.svelte-vscode
+    vscode-extensions.dracula-theme.theme-dracula
+    
+    apostrophe
+    discord
+    firefox
+    krita
+    mission-center
+    nextcloud-client
+    popsicle
+    prismlauncher
+    qFlipper
+    rnote
+    ungoogled-chromium
+    transmission
+    ryujinx
+    dolphin-emu
+    steam-rom-manager
+    {{ 'steam' if name != 'atlantis' }}
+    ardour
+    plexamp
+    spotify
+    vlc
+  ];
+
+  programs.starship.enable = true;
+  programs.starship.interactiveOnly = true;
+  programs.starship.settings = {
+
+  };
+}

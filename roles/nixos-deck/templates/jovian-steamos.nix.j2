@@ -1,0 +1,26 @@
+{ config, lib, pkgs, ... }:
+
+{
+  imports = [
+    (
+      # Put the most recent revision here:
+      let revision = "fdcaab38857f221eea20a0073f891feb36ea8e99"; in
+      builtins.fetchTarball {
+        url = "https://github.com/Jovian-Experiments/Jovian-NixOS/archive/${revision}.tar.gz";
+        # Update the hash as needed:
+        sha256 = "sha256:0000000000000000000000000000000000000000000000000000";
+      } + "/modules"
+    )
+  ];
+
+  jovian.decky-loader = {
+    enable = true;
+    user = "violet"
+  };
+
+  jovian.hardware.has.amd.gpu = true;
+  jovian.steam.enable = true;
+  jovian.steam.user = violet;
+  jovian.steam.autoStart = true;
+  jovian.steam.desktopSession = "gnome"
+}

@@ -1,0 +1,16 @@
+- name: Apply templates
+  become: true
+  template:
+    src: "{{ configuration.src }}"
+    dest: "/etc/nixos/{{ configuration.path | splitext | first }}"
+  vars: 
+    name: "{{ new_hostname }}"
+    desktop: "{{ new_hostname in ['endeavor', 'atlantis', 'columbia'] }}"
+  with_community.general.filetree: "{{ role_path }}/templates"
+  loop_control:
+    loop_var: configuration
+  when: configuration.state == 'file' and configuration.path.endswith(".j2")
+
+- name: Run Rebuild
+  become: true
+  ansible.builtin.command: nixos-rebuild switch

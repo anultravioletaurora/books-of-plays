@@ -1,0 +1,19 @@
+# Always perform same generic linux role
+- name: 🌌 Cosmonautical Ansible Playbook
+  hosts: all
+  roles:
+    - debug
+    - nixos-deck
+
+# - name: 🌃 Install Nvidia Drivers on GPU hosts
+#   hosts: gpu
+#   roles:
+#     - nvidia-container-toolkit
+
+# - name: 🌠 Role Proxmox role on hosts
+#   hosts: proxmox
+#   roles:
+#     - debug
+#     # - linux
+#     - proxmox
+
