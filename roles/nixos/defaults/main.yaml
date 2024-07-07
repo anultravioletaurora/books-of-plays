@@ -5,3 +5,44 @@ deck: # Imports Jovian Experiment archive and adds gaming packages
 desktop: # Adds on productivity suite and dev tool packages
   enabled: false
   gaming: false
+
+users:
+  violet:
+    description: "Violet Rose Caulfield"
+    isNormalUser: true
+    isSuperUser: true
+    packages: [
+      "dracula-theme",
+      "fantasque-sans-mono",
+      "firefox",
+      "ungoogled-chromium",
+      "ardour",
+      "plexamp",
+      "spotify",
+      "vlc",
+      "rnote",
+      "krita",
+      "apostrophe",
+      "qFlipper",
+      "transmission",
+      "deluge",
+      "discord",
+      "prismlauncher",
+      "popsicle",
+      "warp-terminal",
+      "gnome.gnome-tweaks",
+      "gnome-extension-manager",
+      "gnomeExtensions.compiz-windows-effect",
+      "gnomeExtensions.dash-to-dock",
+      "go",
+      "nodejs_20",
+      "typescript",
+      "nodePackages.expo-cli",
+      "starship",
+      "vscode-with-extensions",
+      "vscode-extensions.redhat.ansible",
+      "vscode-extensions.redhat.java",
+      "vscode-extensions.redhat.vscode-yaml",
+      "vscode-extensions.svelte.svelte-vscode",
+      "vscode-extensions.dracula-theme.theme-dracula"
+    ]
