@@ -27,7 +27,7 @@
       ./gnome.nix
       {% endif %}
 
-      {% if deck.enabled or desktop.gaming %}
+      {% if deck.enabled or (desktop.gaming | default(false)) %}
       ./gaming.nix
       {% endif %}
 
