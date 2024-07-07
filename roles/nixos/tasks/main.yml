@@ -5,7 +5,6 @@
     dest: "/etc/nixos/{{ configuration.path | splitext | first }}"
   vars: 
     name: "{{ new_hostname }}"
-    desktop: "{{ new_hostname in ['endeavor', 'atlantis', 'columbia'] }}"
   with_community.general.filetree: "{{ role_path }}/templates"
   loop_control:
     loop_var: configuration
