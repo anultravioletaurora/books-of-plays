@@ -1,0 +1,12 @@
+{ config, pkgs, ... }:
+
+{
+
+  imports = [ ./emulation.nix ];
+
+  # List packages installed in system profile. To search, run:
+  environment.systemPackages = with pkgs; [
+    prismlauncher
+    {{ 'steam' if name != 'atlantis' }}
+  ];
+}
