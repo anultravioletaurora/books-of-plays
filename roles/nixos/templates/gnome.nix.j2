@@ -6,7 +6,7 @@
     services.xserver.displayManager.gdm.enable = {{ (deck.enabled is false and desktop.enabled is true) | lower }};
     services.xserver.desktopManager.gnome.enable = true;
     
-    services.gnome.gnome-remote-desktop.enable = true;
+    services.gnome.gnome-remote-desktop.enable = {{ (deck.enabled is false and desktop.enabled is true) | lower }};
 
     # Configure keymap in X11
     services.xserver = {
@@ -25,8 +25,8 @@
     security.rtkit.enable = true;
     services.pipewire = {
         enable = {{ (deck.enabled is false and desktop.enabled is true) | lower }};
-        alsa.enable = true;
-        alsa.support32Bit = true;
+        alsa.enable = {{ (deck.enabled is false and desktop.enabled is true) | lower }};
+        alsa.support32Bit = {{ (deck.enabled is false and desktop.enabled is true) | lower }};
         pulse.enable = {{ (deck.enabled is false and desktop.enabled is true) | lower }};
         # If you want to use JACK applications, uncomment this
         #jack.enable = true;
