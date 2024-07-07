@@ -3,8 +3,8 @@
     services.xserver.enable = true;
 
     # Enable the GNOME Desktop Environment.
-    services.xserver.displayManager.gdm.enable = {{ (deck.enabled is false and desktop.enabled is true) | lower }};
-    services.xserver.desktopManager.gnome.enable = {{ (deck.enabled is false and desktop.enabled is true) | lower }};
+    services.xserver.displayManager.gdm.enable = true;
+    services.xserver.desktopManager.gnome.enable = true;
     
     services.gnome.gnome-remote-desktop.enable = true;
 
@@ -40,8 +40,10 @@
     # services.xserver.libinput.enable = true;
 
     # Enable automatic login for the user.
-    services.xserver.displayManager.autoLogin.enable = true;
-    services.xserver.displayManager.autoLogin.user = "violet";
+    services.xserver.displayManager.autoLogin = {
+        enable = {{ (deck.enabled is false and desktop.enabled is true) | lower }};
+        user = "violet";
+    };
 
     # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/10>
     systemd.services."getty@tty1".enable = false;
