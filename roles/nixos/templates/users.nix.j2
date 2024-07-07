@@ -1,12 +1,13 @@
 { config, pkgs, ... }:
 
 {
-   users.users.violet = {
-        isNormalUser = true;
-        description = "Violet Rose Caulfield";
-        extraGroups = [ "networkmanager" "wheel" ];
-        packages = with pkgs; [
-            gnome.gnome-tweaks
-            gnome-extension-manager
-        ];
+  users.users.violet = {
+    isNormalUser = true;
+    description = "Violet Rose Caulfield";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+      gnome.gnome-tweaks
+      gnome-extension-manager
+    ];
+  };
 }
