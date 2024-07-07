@@ -1,0 +1,3 @@
+os_version:
+  stable: '24.05'
+  unstable: 'unstable'

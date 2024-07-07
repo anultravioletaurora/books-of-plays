@@ -47,7 +47,7 @@
   # Enable bluetooth support for xbox one controllers
   hardware.xpadneo.enable = true;
 
-  networking.hostName = "{{ name }}"; # Define your hostname.
+  networking.hostName = "{{ inventory_hostname_short }}"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
@@ -89,5 +89,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "{{ 'unstable' if name == 'atlantis' else '24.05' }}"; # Did you read the comment?
+  system.stateVersion = "{{ os_version.unstable if deck.enabled else os_version.stable }}"; # Did you read the comment?
 }

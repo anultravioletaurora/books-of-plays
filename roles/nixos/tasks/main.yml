@@ -1,10 +1,18 @@
+- name: "Set Nix channel to {{ os_version.unstable }} (if deck enabled)"
+  become: true
+  ansible.builtin.command: "nix-channel --add https://channels.nixos.org/nixos-{{ os_version.unstable}} nixos"
+  when: deck.enabled
+
+- name: "Set Nix channel to {{ os_version.stable }} (if desktop only)"
+  become: true
+  ansible.builtin.command: "nix-channel --add https://channels.nixos.org/nixos-{{ os_version.stable }} nixos"
+  when: not deck.enabled
+
 - name: Apply templates
   become: true
   template:
     src: "{{ configuration.src }}"
     dest: "/etc/nixos/{{ configuration.path | splitext | first }}"
-  vars: 
-    name: "{{ new_hostname }}"
   with_community.general.filetree: "{{ role_path }}/templates"
   loop_control:
     loop_var: configuration
@@ -12,4 +20,4 @@
 
 - name: Run Rebuild
   become: true
-  ansible.builtin.command: nixos-rebuild switch
+  ansible.builtin.command: nixos-rebuild switch --upgrade
