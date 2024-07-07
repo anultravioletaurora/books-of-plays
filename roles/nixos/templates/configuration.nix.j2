@@ -17,14 +17,23 @@
       ./surface-overlay.nix
       {% endif %}
 
-      {% if name == 'atlantis' %}
+      {% if deck.enabled %}
       {# Include Jovian SteamOS bits #}
       ./jovian-steamos.nix
       {% endif %}
 
-      {% if desktop %}
+      {% if desktop.enabled %}
       {# Include GNOME configuration #}
       ./gnome.nix
+      {% endif %}
+
+      {% if desktop.gaming or deck.enabled %}
+      ./gaming.nix
+      {% endif %}
+
+      {% if desktop.enabled %}
+      ./productivity-suite.nix
+      ./dev-tool-pkgs.nix
       {% endif %}
     ];
 

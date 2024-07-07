@@ -1,0 +1,7 @@
+deck: # Imports Jovian Experiment archive and adds gaming packages
+  enabled: false
+  htpc: false
+  # 'gaming: true' is implied by enabling the deck setting
+desktop: # Adds on productivity suite and dev tool packages
+  enabled: false
+  gaming: false

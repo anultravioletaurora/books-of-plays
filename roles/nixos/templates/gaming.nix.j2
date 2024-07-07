@@ -7,6 +7,7 @@
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
     prismlauncher
-    {{ 'steam' if name != 'atlantis' }}
+    protonplus
+    {{ 'steam' if not deck.enabled }}
   ];
 }
