@@ -9,8 +9,11 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
 
-      # Include packages configuration
+      {# Include packages configuration #}
       ./packages.nix
+      
+      {# Include users configuration #}
+      ./users.nix
 
       {% if ansible_product_name == 'Surface Laptop Studio 2' %}
       {# Include Surface overlay bits #}

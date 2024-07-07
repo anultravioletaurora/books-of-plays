@@ -58,14 +58,4 @@
     services.udev.packages = with pkgs; [ 
         gnome.gnome-settings-daemon 
     ];
-
-    users.users.violet = {
-        isNormalUser = true;
-        description = "Violet Rose Caulfield";
-        extraGroups = [ "networkmanager" "wheel" ];
-        packages = with pkgs; [
-            gnome.gnome-tweaks
-            gnome-extension-manager
-        ];
-    };
 }
