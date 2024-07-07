@@ -3,7 +3,7 @@
     services.xserver.enable = true;
 
     # Enable the GNOME Desktop Environment.
-    services.xserver.displayManager.gdm.enable = true;
+    services.xserver.displayManager.gdm.enable = {{ (deck.enabled is false and desktop.enabled is true) | lower }};
     services.xserver.desktopManager.gnome.enable = true;
     
     services.gnome.gnome-remote-desktop.enable = true;
@@ -49,44 +49,23 @@
     systemd.services."getty@tty1".enable = false;
     systemd.services."autovt@tty1".enable = false;
 
+    environment.systemPackages = with pkgs; [ 
+        gnomeExtensions.appindicator 
+        gnomeExtensions.compiz-windows-effect
+        gnomeExtensions.dash-to-dock
+    ];
+
+    services.udev.packages = with pkgs; [ 
+        gnome.gnome-settings-daemon 
+    ];
+
     users.users.violet = {
         isNormalUser = true;
         description = "Violet Rose Caulfield";
         extraGroups = [ "networkmanager" "wheel" ];
         packages = with pkgs; [
-            dracula-theme
-            fantasque-sans-mono
-            firefox
-            ungoogled-chromium
-            ardour
-            plexamp
-            spotify
-            vlc
-            rnote
-            krita
-            apostrophe
-            qFlipper
-            transmission
-            deluge
-            discord
-            prismlauncher
-            popsicle
-            warp-terminal
             gnome.gnome-tweaks
             gnome-extension-manager
-            gnomeExtensions.compiz-windows-effect
-            gnomeExtensions.dash-to-dock
-            go
-            nodejs_20
-            typescript
-            nodePackages.expo-cli
-            starship
-            vscode-with-extensions
-            vscode-extensions.redhat.ansible
-            vscode-extensions.redhat.java
-            vscode-extensions.redhat.vscode-yaml
-            vscode-extensions.svelte.svelte-vscode
-            vscode-extensions.dracula-theme.theme-dracula
         ];
     };
 }
