@@ -56,11 +56,11 @@
   nixpkgs.overlays = [
     (self: super: {
       iptsd = super.iptsd.overrideAttrs (prev: {
-        version = "dbc445a23d3b546447eab6d46b49ed76af544070";
+        version = "811524e10c684939e36e60fa833c74e128f9ade6";
         src = super.fetchFromGitHub {
           owner = "linux-surface";
           repo = prev.pname;
-          rev = "dbc445a23d3b546447eab6d46b49ed76af544070";
+          rev = "811524e10c684939e36e60fa833c74e128f9ade6";
     	  hash = "sha256-CzWJdx4h0Z4MEAprN2w5PLjuFpGEqp0kOV2Xezikk0k=";
         };
 
