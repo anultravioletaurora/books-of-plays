@@ -14,6 +14,7 @@
   ];
 
   sound.enable = true;
+  hardware.pulseaudio.enable = true;
 
   hardware.bluetooth = {
     enable = true; # enables support for Bluetooth
@@ -26,9 +27,10 @@
   };
   
   jovian.hardware.has.amd.gpu = true;
-  jovian.steam.enable = true;
-  jovian.steam.user = "violet";
-  jovian.steam.autoStart = true;
-  jovian.steam.desktopSession = "{{ 'gnome' if desktop.enabled else 'gamescope-wayland' }}";
+  jovian.steam = {
+    enable = true;
+    user = "violet";
+    autoStart = true;
+    desktopSession = "{{ 'gnome' if desktop.enabled else 'gamescope-wayland' }}";
   # jovian.steam.desktopSession = "gnome";
 }
