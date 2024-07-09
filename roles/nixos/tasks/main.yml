@@ -1,14 +1,14 @@
-- name: "Set Nix channel to {{ os_version.unstable }} (if deck enabled)"
+- name: "📺 Set Nix channel to {{ os_version.unstable }} (if deck enabled)"
   become: true
   ansible.builtin.command: "nix-channel --add https://channels.nixos.org/nixos-{{ os_version.unstable}} nixos"
   when: deck.enabled
 
-- name: "Set Nix channel to {{ os_version.stable }} (if desktop only)"
+- name: "📺 Set Nix channel to {{ os_version.stable }} (if desktop only)"
   become: true
   ansible.builtin.command: "nix-channel --add https://channels.nixos.org/nixos-{{ os_version.stable }} nixos"
   when: not deck.enabled
 
-- name: Apply templates
+- name: "📝 Apply templates"
   become: true
   template:
     src: "{{ configuration.src }}"
@@ -18,13 +18,13 @@
     loop_var: configuration
   when: configuration.state == 'file' and configuration.path.endswith(".j2")
 
-- name: "Run Rebuild {{ (upgrade | default(false)) | ternary('and Upgrade', '') }}"
+- name: "🛠️ Run Rebuild {{ (upgrade | default(false)) | ternary('and Upgrade', '') }}"
   become: true
   ansible.builtin.shell: 
     cmd: "nixos-rebuild switch {{ (upgrade | default(false)) | ternary('--upgrade', '') }}"
   register: rebuild_result
   ignore_errors: true
   
-- name: Output Rebuild Result
+- name: "☑️ Output Rebuild Result"
   ansible.builtin.debug:
     msg: "Rebuild result: {{ rebuild_result }}"  
