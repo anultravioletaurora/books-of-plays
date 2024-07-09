@@ -20,4 +20,11 @@
 
 - name: "Run Rebuild {{ (upgrade | default(false)) | ternary('and Upgrade', '') }}"
   become: true
-  ansible.builtin.command: "nixos-rebuild switch {{ (upgrade | default(false)) | ternary('--upgrade', '') }}"
+  ansible.builtin.shell: 
+    cmd: "nixos-rebuild switch {{ (upgrade | default(false)) | ternary('--upgrade', '') }}"
+  register: rebuild_result
+  ignore_errors: true
+  
+- name: Output Rebuild Result
+  ansible.builtin.debug:
+    msg: "Rebuild result: {{ rebuild_result }}"  
