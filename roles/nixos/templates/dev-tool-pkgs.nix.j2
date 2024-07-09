@@ -4,12 +4,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    fastfetch
-    fish
     git
-    nano
-    starship
-    wget
     vscode-with-extensions
     vscode-extensions.redhat.ansible
     vscode-extensions.redhat.java
@@ -17,10 +12,4 @@
     vscode-extensions.svelte.svelte-vscode
     vscode-extensions.dracula-theme.theme-dracula
     ];
-    
-    programs.starship.enable = true;
-    programs.starship.interactiveOnly = true;
-    programs.starship.settings = {
-
-  };
 }
