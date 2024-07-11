@@ -21,6 +21,7 @@
 
     # Enable sound with pipewire.
     sound.enable = true;
+    hardware.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
         enable = {{ (deck.enabled is false and desktop.enabled is true) | lower }};
