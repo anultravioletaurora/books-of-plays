@@ -21,7 +21,6 @@
 
     # Enable sound with pipewire.
     sound.enable = true;
-    hardware.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
         enable = {{ (deck.enabled is false and desktop.enabled is true) | lower }};
@@ -40,7 +39,7 @@
     # services.xserver.libinput.enable = true;
 
     # Enable automatic login for the user.
-    services.xserver.displayManager.autoLogin = {
+    services.displayManager.autoLogin = {
         enable = {{ (deck.enabled is false and desktop.enabled is true) | lower }};
         user = "violet";
     };
@@ -53,7 +52,7 @@
         gnomeExtensions.appindicator 
         gnomeExtensions.compiz-windows-effect
         gnomeExtensions.dash-to-dock
-        {{ system.unstable | ternary("gnome-tweaks", "gnome.gnome-tweaks" }}
+        {{ system.unstable | ternary("gnome-tweaks", "gnome.gnome-tweaks") }}
     ];
 
     services.udev.packages = with pkgs; [ 
