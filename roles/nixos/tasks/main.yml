@@ -1,11 +1,18 @@
+- name: "🗑️ Collect Nix garbage before starting"
+  become: true
+  ansible.builtin.shell:
+    cmd: "nix-collect-garbage"
+
 - name: "📺 Set Nix channel to {{ os_version.unstable }} (if deck enabled)"
   become: true
-  ansible.builtin.command: "nix-channel --add https://channels.nixos.org/nixos-{{ os_version.unstable}} nixos"
+  ansible.builtin.shell: 
+    cmd: "nix-channel --add https://channels.nixos.org/nixos-{{ os_version.unstable}} nixos"
   when: deck.enabled
 
 - name: "📺 Set Nix channel to {{ os_version.stable }} (if desktop only)"
   become: true
-  ansible.builtin.command: "nix-channel --add https://channels.nixos.org/nixos-{{ os_version.stable }} nixos"
+  ansible.builtin.shell: 
+    cmd: "nix-channel --add https://channels.nixos.org/nixos-{{ os_version.stable }} nixos"
   when: not deck.enabled
 
 - name: "📝 Apply templates"
