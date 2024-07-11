@@ -53,6 +53,7 @@
         gnomeExtensions.appindicator 
         gnomeExtensions.compiz-windows-effect
         gnomeExtensions.dash-to-dock
+        {{ system.unstable | ternary("gnome-tweaks", "gnome.gnome-tweaks" }}
     ];
 
     services.udev.packages = with pkgs; [ 
