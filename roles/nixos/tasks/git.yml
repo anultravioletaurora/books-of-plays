@@ -3,5 +3,5 @@
   ansible.builtin.git:
     repo: "{{ repos.linux_surface }}"
     dest: "{{ git_repo_dest }}/linux_surface"
-    update: (upgrade | default(false))
+    update: "{{ upgrade | default(false) }}"
   when: ansible_product_name == 'Surface Laptop Studio 2'
