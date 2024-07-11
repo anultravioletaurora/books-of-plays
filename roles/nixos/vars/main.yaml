@@ -5,3 +5,6 @@ os_version:
 system:
   state_version: "{{ deck.enabled | ternary(os_version.unstable, os_version.stable) }}"
   unstable: "{{ deck.enabled }}"
+  
+repos:
+  linux_surface: "https://github.com/linux-surface/linux-surface.git" 

@@ -10,11 +10,11 @@
       FUNCTION_ERROR_INJECTION = yes;
     };
     extraConfig = lib.replaceStrings [ "CONFIG_" "=" ] [ "" " " ] (lib.readFile
-      /home/violet/Workspace/linux-surface/configs/surface-6.9.config
+      {{ git_repo_dest }}/linux-surface/configs/surface-6.9.config
     );
   } ] ++ map (pname: {
     name = "linux-surface-${pname}";
-    patch = /home/violet/Workspace/linux-surface/patches/6.9/${pname}.patch;
+    patch = {{ git_repo_dest }}/linux-surface/patches/6.9/${pname}.patch;
   }) [
     "0001-secureboot"
     "0002-surface3-oemb"

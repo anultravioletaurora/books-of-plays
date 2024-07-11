@@ -5,6 +5,8 @@ deck: # Imports Jovian Experiment archive and adds gaming packages
 desktop: # Adds on productivity suite and dev tool packages
   enabled: false
   gaming: false
+  
+git_repo_dest: "/var/lib" 
 
 users:
   violet:

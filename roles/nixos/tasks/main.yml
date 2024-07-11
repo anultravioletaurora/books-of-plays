@@ -1,3 +1,6 @@
+- name: "Include Git repo updates (as needed)"
+  ansible.builtin.include_tasks: git.yml
+
 - name: "🗑️ Collect Nix garbage before starting"
   become: true
   ansible.builtin.shell:
