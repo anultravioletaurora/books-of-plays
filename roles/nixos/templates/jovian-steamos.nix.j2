@@ -4,11 +4,11 @@
   imports = [
     (
       # Put the most recent revision here:
-      let revision = "fdcaab38857f221eea20a0073f891feb36ea8e99"; in
+      let revision = "{{ jovian.revision }}"; in
       builtins.fetchTarball {
         url = "https://github.com/Jovian-Experiments/Jovian-NixOS/archive/${revision}.tar.gz";
         # Update the hash as needed:
-        sha256 = "sha256:0ksjd2brpr73yyzj8ff9w1xcfwrgvg0yygqpbdh09iwn09hag89a";
+        sha256 = "sha256:{{ jovian.checksum }}";
       } + "/modules"
     )
   ];

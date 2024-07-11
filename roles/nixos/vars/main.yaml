@@ -7,4 +7,9 @@ system:
   unstable: "{{ deck.enabled }}"
   
 repos:
-  linux_surface: "https://github.com/linux-surface/linux-surface.git" 
+  linux_surface: "https://github.com/linux-surface/linux-surface.git"
+  
+  
+jovian:
+  revision: "fdcaab38857f221eea20a0073f891feb36ea8e99"
+  checksum: "0ksjd2brpr73yyzj8ff9w1xcfwrgvg0yygqpbdh09iwn09hag89a"
