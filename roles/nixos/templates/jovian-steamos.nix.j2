@@ -2,11 +2,11 @@
 
 {
   imports = [
-    builtins.fetchTarball {
+    (builtins.fetchTarball {
       url = "https://github.com/Jovian-Experiments/Jovian-NixOS/archive/{{ jovian.revision }}.tar.gz";
       # Update the hash as needed:
-      sha256 = "sha256:{{ jovian_stat.stat.checksum | default("") }}";
-    } + "/modules"
+      sha256 = "sha256:{{ j jovian_stat.stat.checksum | default("") }}";
+    } + "/modules")
   ];
 
   hardware.bluetooth = {
