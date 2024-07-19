@@ -8,8 +8,3 @@ system:
   
 repos:
   linux_surface: "https://github.com/linux-surface/linux-surface.git"
-  
-  
-jovian:
-  revision: "bba994424596df09228f5437bcf8ef7fde1fe56e"
-  checksum: "0ksjd2brpr73yyzj8ff9w1xcfwrgvg0yygqpbdh09iwn09hag89a"
