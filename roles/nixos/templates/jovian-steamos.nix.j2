@@ -2,15 +2,11 @@
 
 {
   imports = [
-    (
-      # Put the most recent revision here:
-      let revision = "{{ jovian.revision }}"; in
-      builtins.fetchTarball {
-        url = "https://github.com/Jovian-Experiments/Jovian-NixOS/archive/${revision}.tar.gz";
-        # Update the hash as needed:
-        sha256 = "sha256:{{ jovian.checksum }}";
-      } + "/modules"
-    )
+    builtins.fetchTarball {
+      url = "https://github.com/Jovian-Experiments/Jovian-NixOS/archive/{{ jovian.revision }}.tar.gz";
+      # Update the hash as needed:
+      sha256 = "sha256:{{ jovian_stat.stat.checksum }}";
+    } + "/modules"
   ];
 
   hardware.bluetooth = {

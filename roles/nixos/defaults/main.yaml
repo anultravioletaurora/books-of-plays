@@ -8,7 +8,6 @@ desktop: # Adds on productivity suite and dev tool packages
   
 jovian:
   revision: "bba994424596df09228f5437bcf8ef7fde1fe56e"
-  checksum: "13a9l3c6jh6iraz5l2nfyd5m6wmr9kimby73sl8kk5pgkrrlbw92" 
   
 git_repo_dest: "/var/lib" 
 

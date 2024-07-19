@@ -1,0 +1,12 @@
+- name: "Fetch Jovian-NixOS revision {{ jovian.revision }} on runner for checksum calculation"
+  local_action: 
+    module: ansible.builtin.get_url
+    url: "https://github.com/Jovian-Experiments/Jovian-NixOS/archive/{{ jovian.revision }}.tar.gz"
+    dest: "/tmp/jovian-{{ jovian.revision }}.tar.gz"
+  
+- name: "Calculate SHA256 and register for use in jovian.nix template"
+  local_action:
+    module: ansible.builtin.stat
+    path: "/tmp/jovian-{{ jovian.revision }}.tar.gz"
+    checksum_algorithm: sha256sum
+  register: jovian_stat
