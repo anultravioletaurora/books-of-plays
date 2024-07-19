@@ -2,7 +2,7 @@
   ansible.builtin.include_tasks: git.yml
   
 - name: "Include Jovian tasks (if needed)"
-  ansible.buintin.include_tasks: jovian.yml
+  ansible.builtin.include_tasks: jovian.yml
   when: deck.enabled 
 
 - name: "🗑️ Collect Nix garbage before starting"

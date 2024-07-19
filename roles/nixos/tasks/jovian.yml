@@ -8,5 +8,5 @@
   local_action:
     module: ansible.builtin.stat
     path: "/tmp/jovian-{{ jovian.revision }}.tar.gz"
-    checksum_algorithm: sha256sum
+    checksum_algorithm: sha256
   register: jovian_stat
