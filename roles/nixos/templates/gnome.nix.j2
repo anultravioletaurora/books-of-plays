@@ -48,15 +48,4 @@
     # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/10>
     systemd.services."getty@tty1".enable = false;
     systemd.services."autovt@tty1".enable = false;
-
-    environment.systemPackages = with pkgs; [ 
-        gnomeExtensions.appindicator 
-        gnomeExtensions.compiz-windows-effect
-        gnomeExtensions.dash-to-dock
-        {{ system.unstable | ternary("gnome-tweaks", "gnome.gnome-tweaks") }}
-    ];
-
-    services.udev.packages = with pkgs; [ 
-        gnome.gnome-settings-daemon 
-    ];
 }
