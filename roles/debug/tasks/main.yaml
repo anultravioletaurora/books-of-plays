@@ -1,0 +1,3 @@
+- name: Output Ansible Facts
+  ansible.built.debug:
+    msg: "{{ ansible_facts }}"
