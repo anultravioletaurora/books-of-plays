@@ -4,4 +4,4 @@
   roles:
     - role: debug
       when: debug | default(false)
-    - role: "{{ ansible_facts[distribution | lower] }}"
+    - role: "{{ ansible_facts[distribution] | lower }}"
