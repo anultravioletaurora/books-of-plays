@@ -2,7 +2,9 @@
 - name: 🌌 Cosmonautical Ansible Playbook
   hosts: all
   tasks:
-    - ansible.builtin.include_role: debug
+    - ansible.builtin.include_role: 
+        name: debug
       when: debug | default(false)
       
-    - ansible.builtin.include_role: "{{ ansible_facts[distribution| lower] }}"
+    - ansible.builtin.include_role: 
+        name: "{{ ansible_facts[distribution| lower] }}"
