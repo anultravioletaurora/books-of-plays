@@ -3,5 +3,5 @@
   hosts: all
   roles:
     - role: debug
-      when: debug | default(true)
+      when: debug | default(false)
     - role: nixos
