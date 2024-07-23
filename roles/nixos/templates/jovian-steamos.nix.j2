@@ -19,14 +19,14 @@
   jovian.decky-loader = {
     enable = true;
   };
-  
+  services.xserver.desktopManager.gnome.enable = true;
   jovian.hardware.has.amd.gpu = true;
   jovian.devices.steamdeck.enableSoundSupport = true;
   jovian.steam = {
     enable = true;
     user = "violet";
     autoStart = true;
-    desktopSession = "{{ 'gnome' if desktop.enabled else 'gamescope-wayland' }}";
+    desktopSession = "{{ 'gnome' if true else 'gamescope-wayland' }}";
   # jovian.steam.desktopSession = "gnome";
   };
 }
