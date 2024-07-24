@@ -1,5 +1,10 @@
 # Always perform same generic linux role
 - name: 🌌 Cosmonautical Ansible Playbook
   hosts: all
-  roles:
-    - nixos
+  tasks:
+    - ansible.builtin.include_role: 
+        name: debug
+      when: debug | default(false)
+      
+    - ansible.builtin.include_role: 
+        name: "{{ ansible_facts['distribution'] | lower }}"
