@@ -5,7 +5,7 @@
     (builtins.fetchTarball {
       url = "https://github.com/Jovian-Experiments/Jovian-NixOS/archive/{{ jovian.revision }}.tar.gz";
       # Update the hash as needed:
-      sha256 = "sha256:13a9l3c6jh6iraz5l2nfyd5m6wmr9kimby73sl8kk5pgkrrlbw92";
+      sha256 = "sha256:{{ jovian.sha }}";
     } + "/modules")
   ];
 
@@ -18,6 +18,7 @@
 
   jovian.decky-loader = {
     enable = true;
+    user = "violet";
   };
   
   jovian.hardware.has.amd.gpu = true;
@@ -27,6 +28,5 @@
     user = "violet";
     autoStart = true;
     desktopSession = "{{ 'gnome' if desktop.enabled else 'gamescope-wayland' }}";
-  # jovian.steam.desktopSession = "gnome";
   };
 }
