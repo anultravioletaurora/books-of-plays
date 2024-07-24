@@ -20,8 +20,10 @@
     enable = true;
   };
   
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
+  services.xserver = {
+    enable = true;
+    desktopManager.gnome.enable = true;
+  };  
   
   jovian.hardware.has.amd.gpu = true;
   jovian.devices.steamdeck.enableSoundSupport = true;
