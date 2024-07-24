@@ -14,16 +14,18 @@
     powerOnBoot = true; # powers up the default Bluetooth controller on boot
   };
   
-  services.hardware.openrgb.enable = true;
+  services = {
+    hardware.openrgb.enable = true;
+    gnome.gnome-remote-desktop.enable = true;
+    xserver = {
+      enable = true;
+      desktopManager.gnome.enable = true;
+    };
+  }; 
 
   jovian.decky-loader = {
     enable = true;
   };
-  
-  services.xserver = {
-    enable = true;
-    desktopManager.gnome.enable = true;
-  };  
   
   jovian.hardware.has.amd.gpu = true;
   jovian.devices.steamdeck.enableSoundSupport = true;
