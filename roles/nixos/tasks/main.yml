@@ -21,6 +21,11 @@
   ansible.builtin.shell: 
     cmd: "nix-channel --add https://channels.nixos.org/nixos-{{ os_version.stable }} nixos"
   when: not deck.enabled
+  
+- name: "📺 Update Nix Channels"
+  become: true
+  ansible.builtin.shell:
+    cmd: "nix-channel --update" 
 
 - name: "📝 Apply templates"
   become: true
