@@ -1,0 +1,4 @@
+- name: "Install and Update Flatpaks"
+  community.general.flatpak:
+    name: "{{ flatpak_pkgs }}"
+    state: latest
