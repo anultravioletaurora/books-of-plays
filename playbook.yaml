@@ -11,4 +11,3 @@
         
     - ansible.builtin.include_role:
         name: "flatpak" 
-      when: flatpak_pkgs is defined and (flatpak_pkgs | length) > 0
