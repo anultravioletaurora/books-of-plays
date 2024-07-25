@@ -1,0 +1,76 @@
+{ lib, pkgs, ... }:
+
+{
+  boot.kernelPackages = pkgs.linuxPackages_6_9;
+  boot.kernelPatches = [ {
+    name = "linux-surface-config";
+    patch = null;
+    extraStructuredConfig = with lib.kernel; {
+      STAGING_MEDIA = yes;
+      FUNCTION_ERROR_INJECTION = yes;
+    };
+    extraConfig = lib.replaceStrings [ "CONFIG_" "=" ] [ "" " " ] (lib.readFile
+      {{ git_repo_dest }}/linux-surface/configs/surface-6.9.config
+    );
+  } ] ++ map (pname: {
+    name = "linux-surface-${pname}";
+    patch = {{ git_repo_dest }}/linux-surface/patches/6.9/${pname}.patch;
+  }) [
+    "0001-secureboot"
+    "0002-surface3-oemb"
+    "0003-mwifiex"
+    "0004-ath10k"
+    "0005-ipts"
+    "0006-ithc"
+    "0007-surface-sam"
+    "0008-surface-sam-over-hid"
+    "0009-surface-button"
+    "0010-surface-typecover"
+    "0011-surface-shutdown"
+    "0012-surface-gpe"
+    "0013-cameras"
+    "0014-amd-gpio"
+    "0015-rtc"
+  ];
+
+  environment.systemPackages = with pkgs; [
+    surface-control
+    iptsd
+  ];
+  services.udev.packages = [
+    pkgs.iptsd
+    pkgs.surface-control
+  ];
+  systemd.packages = [
+    pkgs.iptsd
+  ];
+
+  services.iptsd.config = {
+    Contacts = {
+      ActivationThreshold = 40;
+      DeactivationThreshold = 36;
+      OrientationThresholdMax = 15;
+    };
+  };
+
+  nixpkgs.overlays = [
+    (self: super: {
+      iptsd = super.iptsd.overrideAttrs (prev: {
+        version = "811524e10c684939e36e60fa833c74e128f9ade6";
+        src = super.fetchFromGitHub {
+          owner = "linux-surface";
+          repo = prev.pname;
+          rev = "811524e10c684939e36e60fa833c74e128f9ade6";
+    	  hash = "sha256-CzWJdx4h0Z4MEAprN2w5PLjuFpGEqp0kOV2Xezikk0k=";
+        };
+
+        postPatch = lib.replaceStrings ["etc/systemd/iptsd-find-service"] ["etc/scripts/iptsd-find-service"] prev.postPatch;
+      });
+    })
+    (self: super: {
+      libwacom = self.callPackage (self.path + "/pkgs/development/libraries/libwacom/surface.nix") {
+        inherit (super) libwacom;
+      };
+    })
+  ];
+}

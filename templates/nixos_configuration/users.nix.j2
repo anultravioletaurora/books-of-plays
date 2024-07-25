@@ -1,0 +1,10 @@
+{ config, pkgs, ... }:
+
+{
+  users.users.violet = {
+    isNormalUser = true;
+    description = "Violet Rose Caulfield";
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    packages = [];
+  };
+}

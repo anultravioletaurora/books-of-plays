@@ -1,0 +1,40 @@
+{ config, lib, pkgs, ... }:
+
+{
+  imports = [
+    (builtins.fetchTarball {
+      url = "https://github.com/Jovian-Experiments/Jovian-NixOS/archive/{{ jovian.revision }}.tar.gz";
+      # Update the hash as needed:
+      sha256 = "sha256:{{ jovian.sha }}";
+    } + "/modules")
+  ];
+
+  hardware.bluetooth = {
+    enable = true; # enables support for Bluetooth
+    powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  };
+  
+  services = {
+    hardware.openrgb.enable = true;
+    gnome.gnome-remote-desktop.enable = true;
+    xserver = {
+      enable = true;
+      desktopManager.gnome.enable = true;
+    };
+  }; 
+  
+  # Don't forget to enable Developer Options and toggle "CEF Remote Debugging" 
+  jovian.decky-loader = {
+    enable = true;
+  };
+  
+  jovian.hardware.has.amd.gpu = true;
+  jovian.devices.steamdeck.enableSoundSupport = true;
+  jovian.steam = {
+    enable = true;
+    user = "violet";
+    autoStart = true;
+    desktopSession = "gnome";
+    # desktopSession = "{{ 'gnome' if desktop.enabled else 'gamescope-wayland' }}";
+  };
+}

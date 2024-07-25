@@ -1,0 +1,15 @@
+{ config, pkgs, ... }:
+
+{
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    git
+    vscode-with-extensions
+    vscode-extensions.redhat.ansible
+    vscode-extensions.redhat.java
+    vscode-extensions.redhat.vscode-yaml
+    vscode-extensions.svelte.svelte-vscode
+    vscode-extensions.dracula-theme.theme-dracula
+    ];
+}

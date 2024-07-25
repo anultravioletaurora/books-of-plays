@@ -28,7 +28,7 @@
   template:
     src: "{{ configuration.src }}"
     dest: "/etc/nixos/{{ configuration.path | splitext | first }}"
-  with_community.general.filetree: "{{ role_path }}/templates"
+  with_community.general.filetree: "{{ playbook_dir }}/templates/nixos_configuration"
   loop_control:
     loop_var: configuration
   when: configuration.state == 'file' and configuration.path.endswith(".j2")
