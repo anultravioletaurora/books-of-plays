@@ -6,17 +6,19 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [ 
+      {# Always include the results of the hardware scan. #}
       ./hardware-configuration.nix
 
       {# Include packages configuration #}
       ./packages.nix
       
       {# Include users configuration #}
+      {% if users is defined and (users | length) > 0 %}
       ./users.nix
 
+      {# Include Surface bits if this is a surface device #}
       {% if ansible_product_name == 'Surface Laptop Studio 2' %}
-      {# Include Surface overlay bits #}
       ./surface-overlay.nix
       {% endif %}
 
@@ -84,8 +86,10 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   
-  # Enable docker
+  {# Enable docker if desired #}
+  {% if (docker.enabled | default(false)) %}
   virtualisation.docker.enable = true;
+  {% endif %}
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

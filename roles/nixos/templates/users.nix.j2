@@ -1,10 +1,13 @@
 { config, pkgs, ... }:
 
 {
-  users.users.violet = {
-    isNormalUser = true;
-    description = "Violet Rose Caulfield";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = [];
-  };
+  {% for user in users %}
+  users.users = {
+    {{ user.name }} = {
+      isNormalUser = {{ user.normal_user | lower }};
+      description = "{{ user.description }}";
+      extraGroups = [ {{ user.extra_groups | join(' ') }} ];
+      packages = [ {{ user.packages | join(' ') }} ];
+    }; 
+  };  
 }
