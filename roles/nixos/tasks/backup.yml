@@ -1,0 +1,11 @@
+- name: "Create backup directory"
+  become: true
+  ansible.builtin.file:
+    path: "/etc/nixos_backups"
+    state: directory 
+
+- name: "Create archive of  '/etc/nixos' directory"
+  become: true
+  community.general.archive:
+    path: "/etc/nixos"
+    dest: "/etc/nixos_backups/{{ ansible_date_time.iso8601 }}.tar.gz"

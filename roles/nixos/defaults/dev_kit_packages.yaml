@@ -1,0 +1,10 @@
+dev_kit:
+  - "git"
+  - "qFlipper"
+  - "transmission"
+  - "deluge"
+  - "go"
+  - "nodejs_20"
+  - "typescript"
+  - "nodePackages.expo-cli"
+  - "vscode-with-extensions"

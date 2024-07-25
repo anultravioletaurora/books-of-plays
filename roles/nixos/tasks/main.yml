@@ -1,5 +1,8 @@
 - name: "Include Git repo updates (as needed)"
   ansible.builtin.include_tasks: git.yml
+  
+- name: "Backup current configuration"
+  ansible.builtin.include_tasks: backup.yml 
 
 - name: "🗑️ Collect Nix garbage before starting"
   become: true
