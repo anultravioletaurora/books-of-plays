@@ -38,6 +38,10 @@
       ./productivity-suite.nix
       ./dev-tool-pkgs.nix
       {% endif %}
+      
+      {% if not deck.enabled and desktop.enabled %}
+      ./system.nix
+      {% endif %}
     ];
 
   # Allow unfree packages
