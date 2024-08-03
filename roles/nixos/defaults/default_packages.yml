@@ -1,0 +1,9 @@
+default_pkgs:
+  - "curl"
+  - "tmux"
+  - "fish"
+  - "nano"
+  - "wget"
+  - "fastfetch"
+  - "ls"
+  - "python3Full" # Needed for ansible to work

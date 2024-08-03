@@ -4,19 +4,13 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    dracula-theme
-    fantasque-sans-mono
-    warp-terminal
-    discord
-    firefox
-    mission-center
-    nextcloud-client
+    curl
     tmux
     fish
     nano
-    starship
-    google-chrome
     wget
+    fastfetch
+    ls
     python3Full # Needed for ansible to work
   ];
   

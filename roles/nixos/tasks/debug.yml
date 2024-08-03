@@ -1,0 +1,3 @@
+- name: "Gimme default packages"
+  ansible.builtin.debug:
+    msg: "{{ default_pkgs | join('\\n') }}"
