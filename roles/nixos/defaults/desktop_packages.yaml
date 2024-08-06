@@ -1,6 +1,8 @@
 desktop:
   - "dracula-theme"
+  - "fantasque-sans-mono"
   - "firefox"
+  - "google-chrome"
   - "ungoogled-chromium"
   - "plexamp"
   - "spotify"
