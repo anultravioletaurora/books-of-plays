@@ -10,7 +10,9 @@
     };
 
     # Enable sound with pipewire.
+    {% if not deck.enabled or ansible_product_name == 'Surface Laptop Studio 2' %} 
     sound.enable = true;
+    {% endif %}
     hardware.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
