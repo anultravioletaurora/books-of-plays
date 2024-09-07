@@ -6,12 +6,19 @@
   environment.systemPackages = with pkgs; [
     git
     nodejs_22
-    vscode-with-extensions
-    vscode-extensions.redhat.ansible
-    vscode-extensions.redhat.java
-    vscode-extensions.redhat.vscode-yaml
-    vscode-extensions.svelte.svelte-vscode
-    vscode-extensions.dracula-theme.theme-dracula
+    (vscode-with-extensions.override {
+      vscodeExtensions = with vscode-extensions; [
+        bbenoist.nix
+        hashicorp.hcl
+        ms-python.python
+        prisma.prisma
+        redhat.ansible
+        redhat.java
+        redhat.vscode-yaml
+        svelte.svelte-vscode
+        dracula-theme.theme-dracula
+      ];
+    })
     {{ "zed-editor" if system.unstable }}
   ];
 }
