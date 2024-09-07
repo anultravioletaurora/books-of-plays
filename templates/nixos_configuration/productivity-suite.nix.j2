@@ -2,7 +2,7 @@
 
 {
   # List packages installed in system profile. To search, run:
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
     krita
     popsicle
     qFlipper
@@ -11,7 +11,11 @@
     ardour
     plexamp
     spotify
-  ];
+  {% if desktop.enabled %}
+    ]) ++ (with pkgs.gnome; [
+    gnome-music
+  {% endif %}
+  ]);
   
   # Enable CUPS to print documents.
   services.printing.enable = true;
