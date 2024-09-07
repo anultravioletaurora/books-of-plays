@@ -8,6 +8,12 @@
       sha256 = "sha256:{{ jovian.sha }}";
     } + "/modules")
   ];
+  
+  {% if deck.htpc %}
+  environment.systemPackages = with pkgs; [
+    freetube
+  ];
+  {% endif %}
 
   hardware.bluetooth = {
     enable = true; # enables support for Bluetooth
