@@ -10,7 +10,9 @@
     };
 
     # Enable sound with pipewire.
+    {% if not system.unstable %} 
     sound.enable = true;
+    {% endif %}
     hardware.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {

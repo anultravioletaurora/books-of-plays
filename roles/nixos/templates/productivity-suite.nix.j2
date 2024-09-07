@@ -1,9 +1,0 @@
-{ config, pkgs, ... }:
-
-{
-  # List packages installed in system profile. To search, run:
-  environment.systemPackages = with pkgs; [ {{ productivity | join(' ') }} ];
-  
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-}
