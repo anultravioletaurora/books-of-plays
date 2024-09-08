@@ -8,16 +8,4 @@
     
     services.gnome.gnome-remote-desktop.enable = {{ desktop.enabled | lower }};
     xdg.portal.enable = true;
-    
-    environment.systemPackages = with pkgs; [
-      dracula-theme
-      gnome-tweaks
-      fantasque-sans-mono
-      warp-terminal
-      discord
-      firefox
-      google-chrome
-      mission-center
-      nextcloud-client
-    ];
 }

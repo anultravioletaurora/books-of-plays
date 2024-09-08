@@ -1,8 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # packages.nix
+  # Contains configuration for all deployed Nixpkgs
+  {# Default system packages #}
   environment.systemPackages = (with pkgs; [
     curl
     fastfetch
@@ -14,25 +15,38 @@
     tmux
     wget
 
-  {% if deck.enabled or (desktop.gaming | default(false)) %}
+  {% if install_desktop_packages %}
+  ]) ++ (with pkgs; [
+    discord
+    dracula-theme
+    fantasque-sans-mono
+    firefox
+    gnome-tweaks
+    google-chrome
+    mission-center
+    nextcloud-client
+    warp-terminal
+
+  {% if install_gaming_packages %}
   ]) ++ (with pkgs; [
     clonehero
     discord
     lutris
     prismlauncher
     protonplus
+    protontricks
     steamtinkerlaunch
     r2modman
     {{ 'steam' if not deck.enabled }}
     {{ 'nexusmods-app-unfree' if system.unstable }}
   {% endif %}
 
-  {% if deck.htpc or desktop.enabled %}
+  {% if install_media_packages %}
   ]) ++ (with pkgs; [
     freetube
   {% endif %}
 
-  {% if desktop.enabled %}
+  {% if install_devtool_packages %}
   ]) ++ (with pkgs; [
     nodejs_22
     (vscode-with-extensions.override {
@@ -51,6 +65,4 @@
     {{ "zed-editor" if system.unstable }}
   {% endif %}
   ]);
-  
-  
 }
