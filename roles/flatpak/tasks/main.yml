@@ -7,5 +7,5 @@
 - name: "Install and Update Flatpaks"
   community.general.flatpak:
     name: "{{ flatpak_pkgs }}"
-    state: latest
+    state: present
   when: (flatpak_pkgs is defined) and (flatpak_pkgs | length) > 0 
