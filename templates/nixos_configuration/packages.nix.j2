@@ -25,6 +25,12 @@
     {{ 'steam' if not deck.enabled }}
     {{ 'nexusmods-app-unfree' if system.unstable }}
   {% endif %}
+  
+  {% if deck.htpc or desktop.enabled %}
+  ]) ++ (with pkgs; [
+    freetube
+  {% endif %}
+  
   ]);
   
   
