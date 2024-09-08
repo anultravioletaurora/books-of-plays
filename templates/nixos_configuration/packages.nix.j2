@@ -5,14 +5,15 @@
   # $ nix search wget
   environment.systemPackages = (with pkgs; [
     curl
-    tmux
-    tree
-    fish
-    nano
-    wget
     fastfetch
-    rclone
+    fish
+    git
+    nano
     python3Full # Needed for ansible to work
+    rclone
+    tmux
+    wget
+
   {% if deck.enabled or (desktop.gaming | default(false)) %}
   ]) ++ (with pkgs; [
     clonehero
@@ -25,12 +26,30 @@
     {{ 'steam' if not deck.enabled }}
     {{ 'nexusmods-app-unfree' if system.unstable }}
   {% endif %}
-  
+
   {% if deck.htpc or desktop.enabled %}
   ]) ++ (with pkgs; [
     freetube
   {% endif %}
-  
+
+  {% if desktop.enabled %}
+  ]) ++ (with pkgs; [
+    nodejs_22
+    (vscode-with-extensions.override {
+      vscodeExtensions = with vscode-extensions; [
+        bbenoist.nix
+        hashicorp.hcl
+        ms-python.python
+        prisma.prisma
+        redhat.ansible
+        redhat.java
+        redhat.vscode-yaml
+        svelte.svelte-vscode
+        dracula-theme.theme-dracula
+      ];
+    })
+    {{ "zed-editor" if system.unstable }}
+  {% endif %}
   ]);
   
   
