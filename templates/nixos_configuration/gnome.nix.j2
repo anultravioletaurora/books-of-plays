@@ -6,9 +6,9 @@
             enable = true;
             displayManager.gdm.enable = {{ (deck.enabled is false and desktop.enabled is true) | lower }};
             desktopManager.gnome.enable = true;
-        }
-        gnome.gnome-remote-desktop.enable = {{ (deck.enabled is false and desktop.enabled is true) | lower }};
-    }
+        };
+        gnome.gnome-remote-desktop.enable = {{ desktop.enabled | lower }};
+    };
     
     
 {% if not deck.enabled and desktop.enabled %}
