@@ -8,5 +8,8 @@
     }
     
     services.gnome.gnome-remote-desktop.enable = {{ desktop.enabled | lower }};
+    
+{% if not deck.enabled and desktop.enabled %}
     xdg.portal.enable = true;
+{% endif %}
 }
