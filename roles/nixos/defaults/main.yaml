@@ -28,8 +28,8 @@ packages:
     - discord
     - dracula-theme
     - fantasque-sans-mono
-    - "{{ "gearlever" if system.unstable }}"
-    - "{{ system.unstable | ternary("gnome-tweaks", "gnome.gnome-tweaks") }}"
+    - "{{ 'gearlever' if system.unstable }}"
+    - "{{ system.unstable | ternary('gnome-tweaks', 'gnome.gnome-tweaks') }}"
     - google-chrome
     - krita
     - mission-center
