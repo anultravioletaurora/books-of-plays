@@ -1,6 +1,6 @@
 - name: Register package lists
   ansible.builtin.set_fact:
-    "{{ packagelist.key }}_pkg_list": "{{ packagelist.value | select | list | join('\n\t\t') }}"
+    "{{ packagelist.key }}_pkg_list": "{{ packagelist.value | select | list | join('\n\t\t\t') }}"
   loop: "{{ packages | dict2items }}"
   loop_control:
     loop_var: packagelist
