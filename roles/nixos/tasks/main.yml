@@ -1,6 +1,3 @@
-- name: "Include Debug tasks"
-  ansible.builtin.include_tasks: debug.yml
-
 - name: "Include Git repo updates (as needed)"
   ansible.builtin.include_tasks: git.yml
   
