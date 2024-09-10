@@ -38,6 +38,8 @@
   loop_control:
     loop_var: configuration
   when: configuration.state == 'file' and configuration.path.endswith(".j2")
+  
+  # TODO: Rollback to backup on rebuild failing
 
 - name: "🛠️ Run Rebuild {{ (upgrade | default(false)) | ternary('and Upgrade', '') }}"
   become: true
