@@ -34,8 +34,7 @@ packages:
     - r2modman
     - "{{ 'steam' if not deck.enabled }}"
     - "{{ 'nexusmods-app-unfree' if system.unstable }}"
-
-htpc_pkgs:
+  htpc:
   - kodi-wayland
 
 users:

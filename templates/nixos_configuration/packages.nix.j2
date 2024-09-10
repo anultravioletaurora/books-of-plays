@@ -49,7 +49,7 @@
 
   {% if install_htpc_packages %}
   ]) ++ (with pkgs; [
-    {{ htpc_pkgs | select | list | join("\n") }}
+    {{ htpc_pkg_list }}
   {% endif %}
 
   {% if install_devtool_packages %}
