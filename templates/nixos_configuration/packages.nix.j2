@@ -58,7 +58,7 @@
 
   {% if install_htpc_packages %}
   ]) ++ (with pkgs; [
-    kodi-wayland
+    {{ htpc_pkgs | join("\n") }}
   {% endif %}
 
   {% if install_devtool_packages %}
