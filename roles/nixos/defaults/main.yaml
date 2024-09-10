@@ -22,6 +22,19 @@ default_pkgs:
   - "ls"
   - "python3Full" # Needed for ansible to work
 
+packages:
+  gaming:
+    - clonehero
+    - discord
+    - lutris
+    - prismlauncher
+    - protonplus
+    - protontricks
+    - steamtinkerlaunch
+    - r2modman
+    - "{{ 'steam' if not deck.enabled }}"
+    - "{{ 'nexusmods-app-unfree' if system.unstable }}"
+
 htpc_pkgs:
   - kodi-wayland
 

@@ -39,16 +39,7 @@
 
   {% if install_gaming_packages %}
   ]) ++ (with pkgs; [
-    clonehero
-    discord
-    lutris
-    prismlauncher
-    protonplus
-    protontricks
-    steamtinkerlaunch
-    r2modman
-    {{ 'steam' if not deck.enabled }}
-    {{ 'nexusmods-app-unfree' if system.unstable }}
+    {{ gaming_pkg_list }}
   {% endif %}
 
   {% if install_media_packages %}
@@ -58,7 +49,7 @@
 
   {% if install_htpc_packages %}
   ]) ++ (with pkgs; [
-    {{ htpc_pkgs | join("\n") }}
+    {{ htpc_pkgs | select | list | join("\n") }}
   {% endif %}
 
   {% if install_devtool_packages %}
