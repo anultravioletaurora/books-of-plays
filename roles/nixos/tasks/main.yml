@@ -52,6 +52,7 @@
   
   rescue:
     - name: "Rollback configuration files"
+      become: true
       ansible.builtin.copy:
         src: "{{ configuration_cache_dir }}/"
         dest: "{{ configuration_dir }}/"
@@ -63,6 +64,7 @@
       msg: "Rebuild result: {{ rebuild_result }}"
 
   - name: "Delete cached configuration"
+    become: true
     ansible.builtin.file:
       path: "{{ configuration_cache_dir }}"
       state: absent
