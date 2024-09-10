@@ -11,5 +11,6 @@ repos:
 
 install_desktop_packages: "{{ desktop.enabled }}"
 install_devtool_packages: "{{ desktop.enabled }}"
+install_htpc_packages: "{{ deck.enabled and deck.htpc }}"
 install_gaming_packages: "{{ deck.enabled or (desktop.gaming | default(false)) }}"
-install_media_packages: "{{ deck.htpc or desktop.enabled }}"
+install_media_packages: "{{ (deck.enabled and deck.htpc) or desktop.enabled }}"

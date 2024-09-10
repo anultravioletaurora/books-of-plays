@@ -22,6 +22,9 @@ default_pkgs:
   - "ls"
   - "python3Full" # Needed for ansible to work
 
+htpc_pkgs:
+  - kodi-wayland
+
 users:
   - name: "violet"
     description: "Violet Rose Caulfield"
