@@ -52,6 +52,7 @@ packages:
     - r2modman
     - "{{ 'steam' if not deck.enabled }}"
     - "{{ 'nexusmods-app-unfree' if system.unstable }}"
+    - "{{ 'lact' if gpu is defined and (gpu.amd | default(false)) }}"
   htpc:
   - kodi-wayland
 
