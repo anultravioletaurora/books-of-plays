@@ -5,50 +5,18 @@
   # Contains configuration for all deployed Nixpkgs
   {# Default system packages #}
   environment.systemPackages = (with pkgs; [
-    curl
-    fastfetch
-    fish
-    git
-    nano
-    python3Full # Needed for ansible to work
-    rclone
-    tmux
-    wget
+    # pkgs.python3Full is *required* for Ansible to work
+    python3Full
+    {{ default_pkg_list }}
 
   {% if install_desktop_packages %}
   ]) ++ (with pkgs; [
-    appimage-run
-    ardour
-    discord
-    dracula-theme
-    fantasque-sans-mono
-    gearlever
-    gnome-tweaks
-    google-chrome
-    krita
-    mission-center
-    nextcloud-client
-    plexamp
-    popsicle
-    qFlipper
-    rnote
-    spotify
-    transmission
-    warp-terminal
+    {{ desktop_pkg_list }}
   {% endif %}
 
   {% if install_gaming_packages %}
   ]) ++ (with pkgs; [
-    clonehero
-    discord
-    lutris
-    prismlauncher
-    protonplus
-    protontricks
-    steamtinkerlaunch
-    r2modman
-    {{ 'steam' if not deck.enabled }}
-    {{ 'nexusmods-app-unfree' if system.unstable }}
+    {{ gaming_pkg_list }}
   {% endif %}
 
   {% if install_media_packages %}
@@ -58,7 +26,7 @@
 
   {% if install_htpc_packages %}
   ]) ++ (with pkgs; [
-    kodi-wayland
+    {{ htpc_pkg_list }}
   {% endif %}
 
   {% if install_devtool_packages %}

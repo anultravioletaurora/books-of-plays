@@ -1,0 +1,23 @@
+- name: Find .nix configuration files for caching
+  ansible.builtin.find:
+    paths: "{{ configuration_dir }}"
+    file_type: file
+    patterns: "*.nix"
+    recurse: false
+  register: nixos_configuration
+
+- name: Create cache directory
+  become: true
+  ansible.builtin.file:
+    path: "{{ configuration_cache_dir }}"
+    state: directory
+
+- name: Cache .nix configuration files for rollback if needed
+  become: true
+  ansible.builtin.copy:
+    src: "{{ file.path }}"
+    dest: "{{ configuration_cache_dir }}/{{ file.path | basename }}"
+    remote_src: true
+  loop: "{{ nixos_configuration.files }}"
+  loop_control:
+    loop_var: "file"

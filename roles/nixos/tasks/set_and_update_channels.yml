@@ -1,0 +1,16 @@
+- name: "📺 Set Nix channel to {{ os_version.unstable }} (if deck enabled)"
+  become: true
+  ansible.builtin.shell: 
+    cmd: "nix-channel --add https://channels.nixos.org/nixos-{{ os_version.unstable }} nixos"
+  when: system.unstable
+
+- name: "📺 Set Nix channel to {{ os_version.stable }} (if desktop only)"
+  become: true
+  ansible.builtin.shell: 
+    cmd: "nix-channel --add https://channels.nixos.org/nixos-{{ os_version.stable }} nixos"
+  when: not system.unstable
+  
+- name: "📺 Update Nix Channels"
+  become: true
+  ansible.builtin.shell:
+    cmd: "nix-channel --update" 

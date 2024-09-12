@@ -1,0 +1,17 @@
+{ config, pkgs, ... }:
+
+{
+  # Enable the OpenSSH daemon.
+  services = {
+    openssh.enable = true;
+    flatpak.enable = true;
+  }; 
+  
+  # Enable docker
+  virtualisation.docker.enable = true;
+  
+{% if packages.gaming is contains('lact') %}
+  systemd.packages = with pkgs; [ lact ];
+  systemd.services.lactd.wantedBy = ["multi-user.target"];
+{% endif %} 
+}

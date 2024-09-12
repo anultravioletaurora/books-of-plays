@@ -1,3 +1,6 @@
+configuration_dir: "/etc/nixos"
+configuration_cache_dir: "/tmp/nixos"
+
 os_version:
   stable: '24.05'
   unstable: 'unstable'
