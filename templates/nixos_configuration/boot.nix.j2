@@ -1,4 +1,4 @@
-{ config }:
+{ config, ... }:
 
 {
 {% if gpu is defined and (gpu.amd | default(false)) and (gpu.oc | default(false)) %}
