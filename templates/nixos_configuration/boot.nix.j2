@@ -1,0 +1,9 @@
+{ config }:
+
+{
+{% if gpu is defined and (gpu.amd | default(false)) and (gpu.oc | default(false)) %}
+  boot.kernelParameters = [
+    "amdgpu.ppfeaturemask=0xffffffff"
+  ]
+{% endif %} 
+}
