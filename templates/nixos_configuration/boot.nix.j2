@@ -2,7 +2,7 @@
 
 {
 {% if gpu is defined and (gpu.amd | default(false)) and (gpu.oc | default(false)) %}
-  boot.kernelParameters = [
+  boot.kernelParams = [
     "amdgpu.ppfeaturemask=0xffffffff"
   ];
 {% endif %} 
