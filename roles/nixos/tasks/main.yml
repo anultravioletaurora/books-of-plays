@@ -1,6 +1,3 @@
-- name: "Include Debug tasks"
-  ansible.builtin.include_tasks: debug.yml
-
 - name: "Include Git repo updates (as needed)"
   ansible.builtin.include_tasks: git.yml
   
@@ -12,42 +9,48 @@
   ansible.builtin.shell:
     cmd: "nix-collect-garbage"
 
-- name: "📺 Set Nix channel to {{ os_version.unstable }} (if deck enabled)"
-  become: true
-  ansible.builtin.shell: 
-    cmd: "nix-channel --add https://channels.nixos.org/nixos-{{ os_version.unstable }} nixos"
-  when: deck.enabled or ansible_product_name == 'Surface Laptop Studio 2'
+- name: "Set and update channels (as needed)"
+  ansible.builtin.include_tasks: set_and_update_channels.yml
 
-- name: "📺 Set Nix channel to {{ os_version.stable }} (if desktop only)"
-  become: true
-  ansible.builtin.shell: 
-    cmd: "nix-channel --add https://channels.nixos.org/nixos-{{ os_version.stable }} nixos"
-  when: not deck.enabled and not ansible_product_name == 'Surface Laptop Studio 2'
-  
-- name: "📺 Update Nix Channels"
-  become: true
-  ansible.builtin.shell:
-    cmd: "nix-channel --update" 
+- name: "Cache configuration for rollback if needed"
+  ansible.builtin.include_tasks: find_and_cache_configuration.yml
+
+- name: "Create formatted package lists for device types"
+  ansible.builtin.include_tasks: create_pkg_list.yml
 
 - name: "📝 Apply templates"
   become: true
   template:
     src: "{{ configuration.src }}"
-    dest: "/etc/nixos/{{ configuration.path | splitext | first }}"
+    dest: "{{ configuration_dir }}/{{ configuration.path | splitext | first }}"
   with_community.general.filetree: "{{ playbook_dir }}/templates/nixos_configuration"
   loop_control:
     loop_var: configuration
   when: configuration.state == 'file' and configuration.path.endswith(".j2")
   
-  # TODO: Rollback to backup on rebuild failing
-
 - name: "🛠️ Run Rebuild {{ (upgrade | default(false)) | ternary('and Upgrade', '') }}"
-  become: true
-  ansible.builtin.shell: 
-    cmd: "nixos-rebuild switch {{ (upgrade | default(false)) | ternary('--upgrade', '') }}"
-  register: rebuild_result
-  ignore_errors: true
+  block:
+  - name: "nixos-rebuild switch"
+    become: true
+    ansible.builtin.shell: 
+      cmd: "nixos-rebuild switch {{ (upgrade | default(false)) | ternary('--upgrade', '') }}"
+    register: rebuild_result
   
-- name: "☑️ Output Rebuild Result"
-  ansible.builtin.debug:
-    msg: "Rebuild result: {{ rebuild_result }}"  
+  rescue:
+    - name: "Rollback configuration files"
+      become: true
+      ansible.builtin.copy:
+        src: "{{ configuration_cache_dir }}/"
+        dest: "{{ configuration_dir }}/"
+        remote_src: true
+  
+  always:
+  - name: "☑️ Output Rebuild Result"
+    ansible.builtin.debug:
+      msg: "Rebuild result: {{ rebuild_result }}"
+
+  - name: "Delete cached configuration"
+    become: true
+    ansible.builtin.file:
+      path: "{{ configuration_cache_dir }}"
+      state: absent
