@@ -45,10 +45,6 @@
         remote_src: true
   
   always:
-  - name: "☑️ Output Rebuild Result"
-    ansible.builtin.debug:
-      msg: "Rebuild result: {{ rebuild_result }}"
-
   - name: "Delete cached configuration"
     become: true
     ansible.builtin.file:
