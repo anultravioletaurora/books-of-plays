@@ -3,7 +3,7 @@
     msg: "Performing bisync on {{ item.remote }}\
       and {{ item.target }}"
   loop: "{{ rclone_bisyncs }}"
-  when: (rclone_bisyncs is defined) and (rclone_bisyncs | length > 0)
+  when: ((rclone_bisyncs is defined) and (rclone_bisyncs | length > 0) and (debug | default(false))
 
 - name: 🔄 Perform RClone Bisyncs
   ansible.builtin.command: 'rclone bisync \
