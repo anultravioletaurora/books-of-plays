@@ -9,6 +9,9 @@
   ansible.builtin.command: 'rclone bisync \
     "{{ item.remote }}" \
     "{{ item.target }}" \
+    --check-first \
+    --checksum \
+    --metadata \
     {{ "--resync" if (item.resync | default(false)) }}
     {{ "--force" if (item.force | default(false)) }}'
   loop: "{{ rclone_bisyncs }}"
