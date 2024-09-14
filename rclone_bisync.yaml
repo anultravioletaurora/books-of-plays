@@ -1,4 +1,5 @@
 - name: RClone Bisync
   hosts: all
   roles:
+    - debug
     - rclone-bisync
