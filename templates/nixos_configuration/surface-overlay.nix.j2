@@ -67,10 +67,5 @@
         postPatch = lib.replaceStrings ["etc/systemd/iptsd-find-service"] ["etc/scripts/iptsd-find-service"] prev.postPatch;
       });
     })
-    (self: super: {
-      libwacom = self.callPackage (self.path + "/pkgs/development/libraries/libwacom/surface.nix") {
-        inherit (super) libwacom;
-      };
-    })
   ];
 }
