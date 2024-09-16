@@ -7,7 +7,7 @@
 - name: "🗑️ Collect Nix garbage before starting"
   become: true
   ansible.builtin.shell:
-    cmd: "nix-collect-garbage {{ (delete_old_generations | default(false)) | '--delete-old' }}"
+    cmd: "nix-collect-garbage {{ '--delete-old' if (delete_old_generations | default(false)) }}"
 
 - name: "Set and update channels (as needed)"
   ansible.builtin.include_tasks: set_and_update_channels.yml
