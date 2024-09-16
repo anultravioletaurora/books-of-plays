@@ -1,7 +1,6 @@
 { lib, pkgs, ... }:
 
 {
-  boot.kernelPackages = pkgs.linuxPackages_6_10;
   boot.kernelPatches = [ {
     name = "linux-surface-config";
     patch = null;
