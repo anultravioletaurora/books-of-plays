@@ -1,19 +1,21 @@
-- name: Make sure target directories exist
-  ansible.builtin.file:
-    path: "{{ item.target }}"
-    state: directory
-    recurse: true
-    owner: "{{ users | first }}"
-    group: "users"
-    mode: "0755"
-
 - name: 🔄 Perform Nextcloud Syncs
-  ansible.builtin.command: 'nextcloudcmd -h \
-    --non-interactive 
-    --user {{ nextcloud_username }} \
-    --password {{ nextcloud_password }} \
-    --path "{{ item.remote }}" \
-    "{{ item.target }}" \
-    {{ nextcloud_url }}'
-  loop: "{{ rclone_bisyncs }}"
+  block:
+  - name: Make sure target directories exist
+    ansible.builtin.file:
+      path: "{{ item.target }}"
+      state: directory
+      recurse: true
+      owner: "{{ (users[0].name }}"
+      group: "users"
+      mode: "0755"
+    loop: "{{ rclone_bisyncs }}"
+
+    ansible.builtin.command: 'nextcloudcmd -h \
+      --non-interactive 
+      --user {{ nextcloud_username }} \
+      --password {{ nextcloud_password }} \
+      --path "{{ item.remote }}" \
+      "{{ item.target }}" \
+      {{ nextcloud_url }}'
+    loop: "{{ rclone_bisyncs }}"
   when: (rclone_bisyncs is defined) and (rclone_bisyncs | length > 0)
