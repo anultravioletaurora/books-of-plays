@@ -17,6 +17,7 @@
   {% if install_gaming_packages %}
   ]) ++ (with pkgs; [
     {{ gaming_pkg_list }}
+    {{ emulation_pkg_list }}
   {% endif %}
 
   {% if install_media_packages %}

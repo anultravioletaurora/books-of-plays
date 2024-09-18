@@ -32,10 +32,6 @@
       ./gnome.nix
       {% endif %}
 
-      {% if deck.enabled or (desktop.gaming | default(false)) %}
-      ./gaming.nix
-      {% endif %}
-
       {% if desktop.enabled %}
       ./productivity-suite.nix
       {% endif %}

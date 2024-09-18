@@ -41,6 +41,14 @@ packages:
     - spotify
     - transmission
     - warp-terminal
+  emulation:
+    - dolphin-emu
+    - dolphin-emu-primehack
+    - rpcs3
+    - ryujinx
+    - pcsx2
+    - steam-rom-manager
+    - xemu
   gaming:
     - clonehero
     - discord
