@@ -1,3 +1,12 @@
+- name: Make sure target directories exist
+  ansible.builtin.file:
+    path: "{{ item.target }}"
+    state: directory
+    recurse: true
+    owner: "{{ users | first }}"
+    group: "users"
+    mode: "0755"
+
 - name: 🔄 Perform Nextcloud Syncs
   ansible.builtin.command: 'nextcloudcmd -h \
     --non-interactive 
