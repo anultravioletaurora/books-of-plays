@@ -10,6 +10,7 @@
       mode: "0755"
     loop: "{{ rclone_bisyncs }}"
 
+  - name: Run sync on each target
     ansible.builtin.command: 'nextcloudcmd -h \
       --non-interactive 
       --user {{ nextcloud_username }} \
