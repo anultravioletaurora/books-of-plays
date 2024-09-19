@@ -1,0 +1,5 @@
+- name: RClone Bisync
+  hosts: gaming
+  roles:
+    - ../roles/debug
+    - ../roles/steam-rom-manager

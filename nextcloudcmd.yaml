@@ -1,4 +1,0 @@
-- name: RClone Bisync
-  hosts: all
-  roles:
-    - nextcloudcmd

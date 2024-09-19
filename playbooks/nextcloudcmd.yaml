@@ -1,0 +1,4 @@
+- name: Nextcloud Sync
+  hosts: all
+  roles:
+    - ../roles/nextcloudcmd
