@@ -62,6 +62,7 @@ packages:
     - "{{ 'nexusmods-app-unfree' if system.unstable }}"
     - "{{ 'lact' if gpu is defined and (gpu.amd | default(false)) }}"
   htpc:
+  - discover-overlay
   - kodi-wayland
 
 users:
