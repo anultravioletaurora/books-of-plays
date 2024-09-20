@@ -28,6 +28,7 @@ packages:
     - discord
     - dracula-theme
     - fantasque-sans-mono
+    - firefox
     - "{{ 'gearlever' if system.unstable }}"
     - "{{ system.unstable | ternary('gnome-tweaks', 'gnome.gnome-tweaks') }}"
     - google-chrome
@@ -40,6 +41,7 @@ packages:
     - rnote
     - spotify
     - transmission
+    - vesktop
     - warp-terminal
   emulation:
     - dolphin-emu
