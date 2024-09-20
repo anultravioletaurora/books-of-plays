@@ -9,7 +9,7 @@
   ];
 {% endif %} 
 
-{% if system_vendor is "Microsoft Corporation" %}
+{% if ansible_system_vendor is "Microsoft Corporation" %}
   boot.kernelParams = [
     "pci=hpiosize=0"
   ]
