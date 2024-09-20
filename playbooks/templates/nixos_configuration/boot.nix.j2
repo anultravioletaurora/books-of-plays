@@ -8,4 +8,10 @@
     "amdgpu.ppfeaturemask=0xffffffff"
   ];
 {% endif %} 
+
+{% if system_vendor is "Microsoft Corporation" %}
+  boot.kernelParams = [
+    "pci=hpiosize=0"
+  ]
+{% endif %}
 }
