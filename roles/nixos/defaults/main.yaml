@@ -43,6 +43,7 @@ packages:
     - transmission
     - vesktop
     - warp-terminal
+    - webcord
   emulation:
     - dolphin-emu
     - dolphin-emu-primehack
