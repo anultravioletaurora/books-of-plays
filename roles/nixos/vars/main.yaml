@@ -5,10 +5,6 @@ os_version:
   stable: '24.05'
   unstable: 'unstable'
   
-system:
-  state_version: "{{ (deck.enabled or ansible_product_name == 'Surface Laptop Studio 2') | ternary(os_version.unstable, os_version.stable) }}"
-  unstable: "{{ deck.enabled or ansible_product_name == 'Surface Laptop Studio 2' }}"
-  
 repos:
   linux_surface: "https://github.com/linux-surface/linux-surface.git"
 
@@ -17,3 +13,9 @@ install_devtool_packages: "{{ desktop.enabled }}"
 install_htpc_packages: "{{ deck.enabled and deck.htpc }}"
 install_gaming_packages: "{{ deck.enabled or (desktop.gaming | default(false)) }}"
 install_media_packages: "{{ (deck.enabled and deck.htpc) or desktop.enabled }}"
+
+is_surface_device: "{{ ansible_system_vendor == "Microsoft Corporation" }}"
+
+system:
+  state_version: "{{ (deck.enabled or is_surface_device) | ternary(os_version.unstable, os_version.stable) }}"
+  unstable: "{{ deck.enabled or is_surface_device }}"
