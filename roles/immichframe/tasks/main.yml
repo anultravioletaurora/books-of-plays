@@ -23,6 +23,7 @@
   ansible.builtin.copy:
     src: "{{ temp_location }}/{{ release_folder_name }}/"
     dest: "{{ binary_location }}"
+    remote_src: true
     owner: "{{ users[0].name }}"
     group: "users"
     mode: "0755"
