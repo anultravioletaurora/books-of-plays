@@ -25,7 +25,6 @@ packages:
   desktop:
     - appimage-run
     - ardour
-    - discord
     - dracula-theme
     - fantasque-sans-mono
     - firefox
@@ -43,7 +42,6 @@ packages:
     - transmission
     - vesktop
     - warp-terminal
-    - webcord
   emulation:
     - dolphin-emu
     - dolphin-emu-primehack
@@ -54,7 +52,6 @@ packages:
     - xemu
   gaming:
     - clonehero
-    - discord
     - lutris
     - prismlauncher
     - protonplus
@@ -65,7 +62,6 @@ packages:
     - "{{ 'nexusmods-app-unfree' if system.unstable }}"
     - "{{ 'lact' if gpu is defined and (gpu.amd | default(false)) }}"
   htpc:
-  - discover-overlay
   - kodi-wayland
 
 users:
