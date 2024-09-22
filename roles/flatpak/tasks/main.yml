@@ -1,10 +1,12 @@
 - name: Add the flathub flatpak repository remote to installation
+  become: true
   community.general.flatpak_remote:
     name: flathub
     state: present
     flatpakrepo_url: "https://dl.flathub.org/repo/flathub.flatpakrepo"
 
 - name: "Install and Update Flatpaks"
+  become: true
   community.general.flatpak:
     name: "{{ flatpak_pkgs }}"
     state: present
