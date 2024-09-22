@@ -5,4 +5,4 @@
     dest: "{{ git_repo_dest }}/linux-surface"
     update: "{{ upgrade | default(false) }}"
     force: true
-  when: ansible_product_name == 'Surface Laptop Studio 2'
+  when: is_surface_device

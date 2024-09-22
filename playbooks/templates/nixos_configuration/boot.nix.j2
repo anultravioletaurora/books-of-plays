@@ -9,9 +9,9 @@
   ];
 {% endif %} 
 
-{% if system_vendor is "Microsoft Corporation" %}
+{% if is_surface_device %}
   boot.kernelParams = [
     "pci=hpiosize=0"
-  ]
+  ];
 {% endif %}
 }
