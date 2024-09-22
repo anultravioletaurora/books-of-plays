@@ -17,6 +17,7 @@
   ansible.builtin.unarchive:
     src: "{{ pkg_url }}"
     dest: "{{ temp_location }}"
+    remote_src: true
 
 - name: Move binary from temp directory
   ansible.builtin.copy:
