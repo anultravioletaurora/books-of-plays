@@ -15,7 +15,8 @@ install_gaming_packages: "{{ deck.enabled or (desktop.gaming | default(false)) }
 install_media_packages: "{{ (deck.enabled and deck.htpc) or desktop.enabled }}"
 
 is_surface_device: "{{ ansible_system_vendor == 'Microsoft Corporation' }}"
+is_unstable: "{{ deck.enabled or is_surface_device or (unstable_channel | default(false)) }}"
 
 system:
-  state_version: "{{ (deck.enabled or is_surface_device) | ternary(os_version.unstable, os_version.stable) }}"
-  unstable: "{{ deck.enabled or is_surface_device }}"
+  state_version: "{{ is_unstable | ternary(os_version.unstable, os_version.stable) }}"
+  unstable: "{{ is_unstable }}"

@@ -1,0 +1,1 @@
+release_folder_name: "ImmichFrame-v{{ release_version }}_-linux-x64"

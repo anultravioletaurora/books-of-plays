@@ -1,0 +1,27 @@
+- name: Create Folders
+  ansible.builtin.file:
+    path: "{{ folder_path }}"
+    state: directory
+  loop:
+    - "{{ binary_location }}"
+    - "{{ temp_location }}"
+  loop_control:
+    loop_var: folder_path
+
+- name: Download and extract release
+  ansible.builtin.unarchive:
+    src: "{{ pkg_url }}"
+    dest: "{{ temp_location }}"
+
+- name: Move binary from temp directory
+  ansible.builtin.copy:
+    src: "{{ temp_location }}/{{ release_folder_name }}/"
+    dest: "{{ binary_location }}"
+
+- name: Template and Copy config file
+  ansible.builtin.template:
+
+- name: Start ImmichFrame
+  ansible.builtin.command:
+    cmd: "DISPLAY=:0.0 ./Immich_Frame"
+    chdir: "{{ binary_location }}"
