@@ -1,4 +1,4 @@
-release_version: "1.0.12"
+release_version: "1.0.12.0"
 pkg_url: "https://github.com/immichFrame/ImmichFrame/releases/download/v{{ release_version }}_/ImmichFrame-v{{ release_version }}_-linux-x64.tar.gz"
 
 binary_location: "/var/lib/ImmichFrame"
