@@ -20,6 +20,8 @@
 
 - name: Template and Copy config file
   ansible.builtin.template:
+    src: "{{ role_path }}/templates/Settings.json.j2"
+    dest: "{{ binary_location }}/Settings.json"
 
 - name: Start ImmichFrame
   ansible.builtin.command:
