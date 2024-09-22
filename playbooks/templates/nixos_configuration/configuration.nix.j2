@@ -58,7 +58,10 @@
   networking.networkmanager.enable = true;
 
   # Add support for non-Nix binaries
-  programs.nix-ld.dev.enable = true;
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+
+  ];
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
