@@ -1,1 +1,1 @@
-release_folder_name: "ImmichFrame-v{{ release_version }}_-linux-x64"
+release_folder_name: "ImmichFrame-v{{ release_version }}_-{{ ansible_system | lower }}-x64"

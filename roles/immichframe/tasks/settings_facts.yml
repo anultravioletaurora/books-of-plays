@@ -1,0 +1,3 @@
+- name: Get Latitude and Longitude from IPInfo
+  community.general.ipinfoio_facts:
+  register: ipinfoio_facts

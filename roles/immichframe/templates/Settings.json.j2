@@ -8,9 +8,9 @@
   "DownloadImages": false,
   "ShowMemories": false,
   "RenewImagesDuration": 30,
-  "Albums": [ "" ],
-  "ExcludedAlbums": [ "" ],
-  "People": [ "" ],
+  "Albums": {{ immich.albums | to_json }}
+  "ExcludedAlbums": [],
+  "People": [],
   "RefreshAlbumPeopleInterval": 12,
   "ImmichFrameAlbumName": "",
   "ShowClock": true,
@@ -29,7 +29,7 @@
   "ShowWeatherDescription": true,
   "WeatherFontSize": 24,
   "UnitSystem": "imperial",
-  "WeatherLatLong": "",
+  "WeatherLatLong": "{{ ipinfo_facts.loc }}",
   "Language": "en",
   "UnattendedMode": false
 }
