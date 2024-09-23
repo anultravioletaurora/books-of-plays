@@ -25,7 +25,7 @@
     dest: "{{ binary_location }}"
     remote_src: true
     owner: "{{ users[0].name }}"
-    group: "users"
+    group: "{{ 'staff' if (ansible_system | lower) is 'macos' else 'users'}}"
     mode: "0755"
 
 - name: Template and Copy config file
