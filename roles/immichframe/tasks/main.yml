@@ -9,7 +9,7 @@
     src: "{{ role_path }}/templates/Settings.json.j2"
     dest: "{{ binary_location }}/Settings.json"
     owner: "{{ users[0].name }}"
-    group: "users"
+    group: "{{ 'staff' if is_macos else 'users'}}"
     mode: "0755"
 
 - name: Start ImmichFrame
