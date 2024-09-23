@@ -1,0 +1,6 @@
+- name: Install required packages
+  community.general.homebrew:
+    name: "{{ pkg_name }}"
+    state: present
+    update_homebrew: true
+  loop: "{{ macos_pkgs }}"
