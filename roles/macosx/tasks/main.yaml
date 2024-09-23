@@ -4,3 +4,5 @@
     state: present
     update_homebrew: true
   loop: "{{ macos_pkgs }}"
+  loop_control:
+    loop_var: pkg_name
