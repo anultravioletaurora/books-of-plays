@@ -2,7 +2,7 @@
   ansible.builtin.include_tasks: file_management.yml
 
 - name: Gather facts for configuration file
-  ansible.builtin.include_tasks: setting_facts.yml
+  ansible.builtin.include_tasks: settings_facts.yml
 
 - name: Template and Copy config file
   ansible.builtin.template:
