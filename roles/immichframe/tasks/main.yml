@@ -14,5 +14,5 @@
 
 - name: Start ImmichFrame
   ansible.builtin.command:
-    cmd: "./Immich_Frame DISPLAY=:0.0"
+    cmd: "./Immich_Frame DISPLAY=:0.0 &"
     chdir: "{{ binary_location }}"
