@@ -1,2 +1,4 @@
-release_folder_name: "ImmichFrame-v{{ release_version }}_-{{ ansible_system | lower }}-x64"
-release_type: "{{ 'osx' if (ansible_system | lower) == 'darwin' else (ansible_system | lower) }}"
+is_macos: "{{ (ansible_system | lower) == 'darwin' }}"
+
+release_folder_name: "ImmichFrame-v{{ release_version }}_-{{ release_type }}-x64"
+release_type: "{{ 'osx' if is_macos else (ansible_system | lower) }}"
