@@ -4,4 +4,4 @@ pkg_url: "https://github.com/immichFrame/ImmichFrame/releases/download/\
   {{ release_type }}-x64.tar.gz"
 
 binary_location: "/var/lib/ImmichFrame"
-temp_location: "/temp/ImmichFrame"
+temp_location: "/tmp/ImmichFrame"
