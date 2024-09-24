@@ -39,7 +39,7 @@ packages:
     - qFlipper
     - rnote
     - spotify
-    - transmission
+    - transmission_4
     - vesktop
     - warp-terminal
   emulation:
