@@ -3,7 +3,7 @@ git_repo_dest: "/var/lib"
 packages:
   default:
     - curl
-    - fastfetch
+    - "{{ 'fastfetch' if (ansible_facts['distribution'] | lower) == 'nixos' else 'neofetch'}}"
     - fish
     - git
     - nano
