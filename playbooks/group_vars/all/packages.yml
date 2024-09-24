@@ -17,8 +17,8 @@ packages:
     - dracula-theme
     - fantasque-sans-mono
     - firefox
-    - "{{ 'gearlever' if system.unstable }}"
-    - "{{ system.unstable | ternary('gnome-tweaks', 'gnome.gnome-tweaks') }}"
+    - "{{ 'gearlever' if (system.unstable | default(false)) }}"
+    - "{{ (system.unstable | default(false)) | ternary('gnome-tweaks', 'gnome.gnome-tweaks') }}"
     - google-chrome
     - krita
     - mission-center
@@ -47,8 +47,8 @@ packages:
     - protontricks
     - steamtinkerlaunch
     - r2modman
-    - "{{ 'steam' if not deck.enabled }}"
-    - "{{ 'nexusmods-app-unfree' if system.unstable }}"
+    - "{{ 'steam' if not (deck.enabled | default(false)) }}"
+    - "{{ 'nexusmods-app-unfree' if (system.unstable | default(false)) }}"
     - "{{ 'lact' if gpu is defined and (gpu.amd | default(false)) }}"
   htpc:
   - kodi-wayland
