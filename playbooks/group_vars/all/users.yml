@@ -1,0 +1,11 @@
+users:
+  - name: "violet"
+    description: "Violet Rose Caulfield"
+    normal_user: true
+    super_user: true
+    extra_groups:
+      - "wheel"
+      - "docker"
+      - "networkmanager"
+    packages:
+      - "fantasque-sans-mono"
