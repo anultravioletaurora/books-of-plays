@@ -8,11 +8,13 @@ os_version:
 repos:
   linux_surface: "https://github.com/linux-surface/linux-surface.git"
 
+install_creator_packages: "{{ desktop.enabled and (desktop.creator | default(false)) }}"
 install_desktop_packages: "{{ desktop.enabled }}"
 install_devtool_packages: "{{ desktop.enabled }}"
 install_htpc_packages: "{{ deck.enabled and deck.htpc }}"
 install_gaming_packages: "{{ deck.enabled or (desktop.gaming | default(false)) }}"
 install_media_packages: "{{ (deck.enabled and deck.htpc) or desktop.enabled }}"
+install_productivity_packages: "{{ desktop.enabled and (desktop.productivity | default(false)) }}"
 
 is_surface_device: "{{ ansible_system_vendor == 'Microsoft Corporation' }}"
 is_unstable: "{{ deck.enabled or is_surface_device or (unstable_channel | default(false)) }}"

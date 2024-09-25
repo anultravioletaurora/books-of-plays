@@ -31,10 +31,6 @@
       {# Include GNOME configuration #}
       ./gnome.nix
       {% endif %}
-
-      {% if desktop.enabled %}
-      ./productivity-suite.nix
-      {% endif %}
       
       {% if not deck.enabled and desktop.enabled %}
       ./system.nix

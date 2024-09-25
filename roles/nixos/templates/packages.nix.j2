@@ -9,11 +9,6 @@
     python3Full
     {{ default_pkg_list }}
 
-  {% if install_creator_packages %}
-  ]) ++ (with pkgs; [
-    {{ creator_pkg_list }}
-  {% endif %}
-
   {% if install_desktop_packages %}
   ]) ++ (with pkgs; [
     {{ desktop_pkg_list }}
@@ -38,19 +33,6 @@
   {% if install_devtool_packages %}
   ]) ++ (with pkgs; [
     {{ devtool_pkg_list }}
-    (vscode-with-extensions.override {
-      vscodeExtensions = with vscode-extensions; [
-        bbenoist.nix
-        hashicorp.hcl
-        ms-python.python
-        prisma.prisma
-        redhat.ansible
-        redhat.java
-        redhat.vscode-yaml
-        svelte.svelte-vscode
-        dracula-theme.theme-dracula
-      ];
-    })
   {% endif %}
   ]);
 }

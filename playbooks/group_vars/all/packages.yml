@@ -1,6 +1,11 @@
 git_repo_dest: "/var/lib" 
 
 packages:
+  creator:
+    - ardour
+    - davinci-resolve
+    - krita
+    - sonivox
   default:
     - curl
     - "{{ 'fastfetch' if (ansible_facts['distribution'] | lower) == 'nixos' else 'neofetch'}}"
@@ -13,7 +18,6 @@ packages:
     - wget
   desktop:
     - appimage-run
-    - ardour
     - dracula-theme
     - fantasque-sans-mono
     - firefox
@@ -22,16 +26,17 @@ packages:
     - google-chrome
     - libimobiledevice
     - usbmuxd
-    - krita
     - mission-center
     - nextcloud-client
-    - plexamp
-    - popsicle
     - qFlipper
     - rnote
-    - spotify
     - deluge
     - vesktop
+  devtool:
+    - ansible
+    - nodejs_22
+    - popsicle
+    - "{{ 'zed-editor' if system.unstable }}"
     - warp-terminal
   emulation:
     - dolphin-emu
@@ -53,4 +58,8 @@ packages:
     - "{{ 'nexusmods-app-unfree' if (system.unstable | default(false)) }}"
     - "{{ 'lact' if gpu is defined and (gpu.amd | default(false)) }}"
   htpc:
-  - kodi-wayland
+    - kodi-wayland
+  media:
+    - freetube
+    - plexamp
+    - spotify
