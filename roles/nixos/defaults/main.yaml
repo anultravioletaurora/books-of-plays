@@ -12,4 +12,4 @@ jovian:
   
 git_repo_dest: "/var/lib" 
 
-
+linux_surface_revision: "bbf9548e3309fd226e729db53584fa0bf229a425"
