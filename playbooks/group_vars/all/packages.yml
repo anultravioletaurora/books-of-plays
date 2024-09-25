@@ -20,6 +20,8 @@ packages:
     - "{{ 'gearlever' if (system.unstable | default(false)) }}"
     - "{{ (system.unstable | default(false)) | ternary('gnome-tweaks', 'gnome.gnome-tweaks') }}"
     - google-chrome
+    - libimobiledevice
+    - usbmuxd
     - krita
     - mission-center
     - nextcloud-client
