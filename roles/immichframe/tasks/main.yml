@@ -1,42 +1,18 @@
-- name: Create Folders
-  become: true
-  ansible.builtin.file:
-    path: "{{ folder_path }}"
-    state: directory
-    recurse: true
-    owner: "{{ users[0].name }}"
-    group: "users"
-    mode: "0755"
-  loop:
-    - "{{ binary_location }}"
-    - "{{ temp_location }}"
-  loop_control:
-    loop_var: folder_path
+- name: Include file management
+  ansible.builtin.include_tasks: file_management.yml
 
-- name: Download and extract release
-  ansible.builtin.unarchive:
-    src: "{{ pkg_url }}"
-    dest: "{{ temp_location }}"
-    remote_src: true
-
-- name: Move binary from temp directory
-  ansible.builtin.copy:
-    src: "{{ temp_location }}/{{ release_folder_name }}/"
-    dest: "{{ binary_location }}"
-    remote_src: true
-    owner: "{{ users[0].name }}"
-    group: "users"
-    mode: "0755"
+- name: Gather facts for configuration file
+  ansible.builtin.include_tasks: settings_facts.yml
 
 - name: Template and Copy config file
   ansible.builtin.template:
     src: "{{ role_path }}/templates/Settings.json.j2"
     dest: "{{ binary_location }}/Settings.json"
     owner: "{{ users[0].name }}"
-    group: "users"
+    group: "{{ 'staff' if is_macos else 'users'}}"
     mode: "0755"
 
 - name: Start ImmichFrame
   ansible.builtin.command:
-    cmd: "./Immich_Frame DISPLAY=:0.0"
+    cmd: "./Immich_Frame DISPLAY=:0.0 &"
     chdir: "{{ binary_location }}"

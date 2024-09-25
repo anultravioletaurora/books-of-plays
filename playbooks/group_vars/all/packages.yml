@@ -1,0 +1,54 @@
+git_repo_dest: "/var/lib" 
+
+packages:
+  default:
+    - curl
+    - "{{ 'fastfetch' if (ansible_facts['distribution'] | lower) == 'nixos' else 'neofetch'}}"
+    - fish
+    - git
+    - nano
+    - rclone
+    - tmux
+    - tree
+    - wget
+  desktop:
+    - appimage-run
+    - ardour
+    - dracula-theme
+    - fantasque-sans-mono
+    - firefox
+    - "{{ 'gearlever' if (system.unstable | default(false)) }}"
+    - "{{ (system.unstable | default(false)) | ternary('gnome-tweaks', 'gnome.gnome-tweaks') }}"
+    - google-chrome
+    - krita
+    - mission-center
+    - nextcloud-client
+    - plexamp
+    - popsicle
+    - qFlipper
+    - rnote
+    - spotify
+    - deluge
+    - vesktop
+    - warp-terminal
+  emulation:
+    - dolphin-emu
+    - dolphin-emu-primehack
+    - rpcs3
+    - ryujinx
+    - pcsx2
+    - steam-rom-manager
+    - xemu
+  gaming:
+    - clonehero
+    - lutris
+    - prismlauncher
+    - protonplus
+    - protontricks
+    - steamtinkerlaunch
+    - r2modman
+    - "{{ 'steam' if not (deck.enabled | default(false)) }}"
+    - "{{ 'nexusmods-app-unfree' if (system.unstable | default(false)) }}"
+    - "{{ 'lact' if gpu is defined and (gpu.amd | default(false)) }}"
+  htpc:
+  - kodi-wayland

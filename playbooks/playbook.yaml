@@ -1,6 +1,7 @@
 # Always perform same generic linux role
 - name: 🌌 Cosmonautical Ansible Playbook
   hosts: all
+  # strategy: free # Don't wait for other hosts to finish a task before continuing
   tasks:
     - ansible.builtin.include_role: 
         name: ../roles/debug
