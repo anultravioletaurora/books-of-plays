@@ -7,7 +7,7 @@ desktop: # Adds on productivity suite and dev tool packages
   gaming: false
   
 jovian:
-  sha: "060j2bf2csa6i3lpglnxnlkph3snp31han9yzrahgc9i17l0680i"
+  sha: "0h4mic8a8krj9h93kbv42ip3972j3hlxdm0a2k6ffbzgrjgkfvy4"
   revision: "03aa054340528d300711253a98f7dccca9378604"
   
 git_repo_dest: "/var/lib" 
