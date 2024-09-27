@@ -6,5 +6,5 @@ class FilterModule(object):
         }
 
     def filter_array(self, array):
-        nix_array_string = array.str()
+        nix_array_string = '[' + array + ']'
         return nix_array_string
