@@ -4,6 +4,14 @@
   # Enable the OpenSSH daemon.
   services = {
     openssh.enable = true;
+{% if (sunshine.enabled | default(false)) %}
+    sunshine = {
+      enable = true;
+      # autoStart = true; # default
+      # capSysAdmin = false; # default
+      {# if settings are configured then configuration thru the UI is not possible #}
+    };
+{% endif %}
     flatpak.enable = true;
   }; 
   
@@ -13,5 +21,5 @@
 {% if packages.gaming is contains('lact') %}
   systemd.packages = with pkgs; [ lact ];
   systemd.services.lactd.wantedBy = ["multi-user.target"];
-{% endif %} 
+{% endif %}
 }

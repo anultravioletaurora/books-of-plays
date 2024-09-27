@@ -52,5 +52,10 @@
       ];
     })
   {% endif %}
+
+  {% if (sunshine.enabled | default(false)) %}
+  ]) ++ (with pkgs; [
+    sunshine
+  {% endif %}
   ]);
 }
