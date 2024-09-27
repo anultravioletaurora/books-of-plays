@@ -62,6 +62,10 @@ packages:
   htpc:
     - kodi-wayland
   media:
+    - delfin
+    - feishin
+    - finamp
     - freetube
+    - jellyfin-media-player
     - plexamp
     - spotify
