@@ -2,9 +2,9 @@
 class FilterModule(object):
     def filters(self):
         return {
-            'nix_array': self.filter_array
+            'nix_list': self.filter_list
         }
 
-    def filter_array(self, array):
-        nix_array_string = '[' + array + ']'
+    def filter_list(self, list):
+        nix_array_string = '[' + " ".join(array) + '];'
         return nix_array_string

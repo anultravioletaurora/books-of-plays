@@ -1,6 +1,6 @@
 - name: "This is gonna break shit"
   ansible.builtin.debug:
-    msg: "{{ packages.default | nix_array }}"
+    msg: "{{ packages.default | nix_list }}"
 
 - name: "Include Git repo updates (as needed)"
   ansible.builtin.include_tasks: git.yml
