@@ -6,5 +6,5 @@ class FilterModule(object):
         }
 
     def filter_list(self, list):
-        nix_array_string = '[' + " ".join(array) + '];'
-        return nix_array_string
+        nix_list_string = '[' + " ".join(list) + '];'
+        return nix_list_string
