@@ -8,7 +8,7 @@ desktop: # Adds on productivity suite and dev tool packages
   
 jovian:
   sha: "0h4mic8a8krj9h93kbv42ip3972j3hlxdm0a2k6ffbzgrjgkfvy4"
-  revision: "03aa054340528d300711253a98f7dccca9378604"
+  revision: "ce8ea310530c77b112fda3c88cb1f57e78823467"
   
 git_repo_dest: "/var/lib" 
 
