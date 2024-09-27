@@ -11,4 +11,5 @@
         name: "../roles/{{ ansible_facts['distribution'] | lower }}"
         
     - ansible.builtin.include_role:
-        name: ../roles/flatpak 
+        name: ../roles/flatpak
+      when: ansible_system == "Linux"
