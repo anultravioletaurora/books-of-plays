@@ -17,7 +17,10 @@
       {# Include users configuration #}
       ./users.nix
 
-      {% if ansible_product_name == 'Surface Laptop Studio 2' %}
+      {# Include Desktop Environment configuration #}
+      ./desktop-session.nix
+
+      {% if is_surface_device %}
       {# Include Surface overlay bits #}
       ./surface-overlay.nix
       {% endif %}
