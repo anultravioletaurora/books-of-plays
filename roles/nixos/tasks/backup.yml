@@ -1,11 +1,33 @@
-- name: "Create backup directory"
+- name: "Create top level backup directory"
   become: true
   ansible.builtin.file:
     path: "/etc/nixos_backups"
     state: directory 
 
-- name: "Create archive of  '/etc/nixos' directory"
+- name: "Create backup directory for this job"
+  become: true
+  ansible.builtin.file:
+    path: "/etc/nixos_backups/{{ '%Y-%m-%d_%H-%M-%S' | strftime }}"
+    state: directory 
+
+- name: Copy .nix configuration files to working backup folder
+  become: true
+  ansible.builtin.copy:
+    src: "{{ file.path }}"
+    dest: "{{ configuration_cache_dir }}/{{ file.path | basename }}"
+    remote_src: true
+  loop: "{{ nixos_configuration.files }}"
+  loop_control:
+    loop_var: "file"
+
+- name: "Create archive of backup directory"
   become: true
   community.general.archive:
-    path: "/etc/nixos"
+    path: "/etc/nixos_backups/{{ '%Y-%m-%d_%H-%M-%S' | strftime }}"
     dest: "/etc/nixos_backups/{{ '%Y-%m-%d_%H-%M-%S' | strftime }}.tar.gz"
+
+- name: "Cleanup working backup directory"
+  become: true
+  ansible.builtin.file:
+    path: "/etc/nixos_backups/{{ '%Y-%m-%d_%H-%M-%S' | strftime }}"
+    state: absent

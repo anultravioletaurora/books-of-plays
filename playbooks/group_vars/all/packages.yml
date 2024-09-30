@@ -42,18 +42,18 @@ packages:
     - popsicle
     - "{{ 'zed-editor' if system.unstable }}"
     - warp-terminal
-    - name: vscode-with-extensions
-      overrides:
-        vscodeExtensions:
-          - bbenoist.nix
-          - hashicorp.hcl
-          - ms-python.python
-          - prisma.prisma
-          - redhat.ansible
-          - redhat.java
-          - redhat.vscode-yaml
-          - svelte.svelte-vscode
-          - dracula-theme.theme-dracula
+    # - name: vscode-with-extensions
+    #   overrides:
+    #     vscodeExtensions:
+    #       - bbenoist.nix
+    #       - hashicorp.hcl
+    #       - ms-python.python
+    #       - prisma.prisma
+    #       - redhat.ansible
+    #       - redhat.java
+    #       - redhat.vscode-yaml
+    #       - svelte.svelte-vscode
+    #       - dracula-theme.theme-dracula
   emulation:
     - dolphin-emu
     - dolphin-emu-primehack
@@ -76,10 +76,10 @@ packages:
     - "{{ 'nexusmods-app-unfree' if (system.unstable | default(false)) }}"
     - "{{ 'lact' if gpu is defined and (gpu.amd | default(false)) }}"
   htpc:
-    - name: kodi-wayland
-      with:
-        kodiPkgs:
-          - jellyfin
+    # - name: kodi-wayland
+    #   with:
+    #     kodiPkgs:
+    #       - jellyfin
 
   media:
     - delfin
