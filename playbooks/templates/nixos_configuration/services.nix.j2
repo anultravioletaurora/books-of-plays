@@ -12,6 +12,19 @@
       {# if settings are configured then configuration thru the UI is not possible #}
     };
 {% endif %}
+
+{% if htpc.enabled %}
+    xserver = { 
+      enable = true;
+      desktopManager.kodi.enable = true;
+      displayManager = {
+        autoLogin = {
+          enable = true;
+          user = "kodi";
+        }; 
+        lightdm.greeter.enable = false;
+      }; 
+{% endif %}
     flatpak.enable = true;
   }; 
   

@@ -5,6 +5,8 @@ deck: # Imports Jovian Experiment archive and adds gaming packages
 desktop: # Adds on productivity suite and dev tool packages
   enabled: false
   gaming: false
+htpc:
+  enabled: false  
   
 jovian:
   sha: "0c09zyq4dkqwj3pc8v0sk7q8rbjkm48d70y0bqb8pxhra5yl554x"
