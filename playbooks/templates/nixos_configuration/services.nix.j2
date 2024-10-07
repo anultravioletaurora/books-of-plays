@@ -31,7 +31,10 @@
       }; 
     };
 {% endif %}
+
+{% if desktop.enabled %}
     flatpak.enable = true;
+{% endif %}
   }; 
   
   # Enable docker
