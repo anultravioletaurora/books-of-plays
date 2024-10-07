@@ -39,7 +39,7 @@
   ]) ++ (with pkgs; [
     {{ devtool_pkg_list }}
     (vscode-with-extensions.override {
-      vscodeExtensions = with vscode-extensions; {{ packages.vscode-extensions | nix_list }};
+      vscodeExtensions = with vscode-extensions; {{ packages.vscode_extensions | nix_list }};
     })
   {% endif %}
 

@@ -20,7 +20,8 @@
         enable = true;
         package = pkgs.kodi.withPackages (pkgs: with pkgs; [
           jellyfin
-      ]);
+        ]);
+      };
       displayManager = {
         autoLogin = {
           enable = true;
