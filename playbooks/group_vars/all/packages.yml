@@ -42,7 +42,7 @@ packages:
     - popsicle
     - "{{ 'zed-editor' if system.unstable }}"
     - warp-terminal
-  vscode-extensions:
+  vscode_extensions:
     - bbenoist.nix
     - hashicorp.hcl
     - ms-python.python
