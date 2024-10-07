@@ -15,6 +15,7 @@
   become: true
   ansible.builtin.shell:
     cmd: "nix-collect-garbage {{ '--delete-old' if (delete_old_generations | default(false)) }}"
+  when: collect_garbage | default(true) 
 
 - name: "Set and update channels (as needed)"
   ansible.builtin.include_tasks: set_and_update_channels.yml
