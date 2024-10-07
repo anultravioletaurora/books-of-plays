@@ -75,7 +75,7 @@ packages:
     - "{{ 'nexusmods-app-unfree' if (system.unstable | default(false)) }}"
     - "{{ 'lact' if gpu is defined and (gpu.amd | default(false)) }}"
   htpc:
-    - kodi-wayland
+    - "(pkgs.kodi-wayland.withPackages (kodiPkgs: with kodiPkgs; {{ kodi_pkgs | nix_list }} ))"
     # - name: kodi-wayland
     #   with:
     #     kodiPkgs:
