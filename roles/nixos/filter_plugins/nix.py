@@ -6,7 +6,7 @@ class FilterModule(object):
         }
 
     def filter_list(self, list: list):
-        nix_list_string = '[' + " ".join(list) + '];'
+        nix_list_string = '[' + " ".join(list) + ']'
 
         # list will have str and dict in it
         return nix_list_string
