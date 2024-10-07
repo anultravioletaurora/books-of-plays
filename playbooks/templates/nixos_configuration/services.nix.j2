@@ -13,6 +13,16 @@
     };
 {% endif %}
 
+    udev.packages = [ 
+{% if deck.enabled or desktop.gaming %}
+      pkgs.dolphinEmu 
+{% endif %}
+{% if is_surface_device %}
+      pkgs.iptsd
+      pkgs.surface-control
+{% endif %}
+    ];
+
 {% if htpc.enabled %}
     xserver = { 
       enable = true;
