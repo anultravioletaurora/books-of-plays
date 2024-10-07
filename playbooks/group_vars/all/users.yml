@@ -4,8 +4,9 @@ users:
     normal_user: true
     super_user: true
     extra_groups:
-      - "wheel"
+      - "dialout"
       - "docker"
       - "networkmanager"
+      - "wheel"
     packages:
       - "fantasque-sans-mono"

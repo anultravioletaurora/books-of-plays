@@ -42,18 +42,17 @@ packages:
     - popsicle
     - "{{ 'zed-editor' if system.unstable }}"
     - warp-terminal
-    # - name: vscode-with-extensions
-    #   overrides:
-    #     vscodeExtensions:
-    #       - bbenoist.nix
-    #       - hashicorp.hcl
-    #       - ms-python.python
-    #       - prisma.prisma
-    #       - redhat.ansible
-    #       - redhat.java
-    #       - redhat.vscode-yaml
-    #       - svelte.svelte-vscode
-    #       - dracula-theme.theme-dracula
+  vscode-extensions:
+    - bbenoist.nix
+    - hashicorp.hcl
+    - ms-python.python
+    - prisma.prisma
+    - redhat.ansible
+    - redhat.java
+    - redhat.vscode-yaml
+    - svelte.svelte-vscode
+    - dracula-theme.theme-dracula
+
   emulation:
     - dolphin-emu
     - dolphin-emu-primehack
