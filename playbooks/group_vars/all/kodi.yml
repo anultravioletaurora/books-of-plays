@@ -1,3 +1,10 @@
 kodi_pkgs:
 - visualization-waveform
+- visualization-starburst
+- visualization-spectrum
+- visualization-shadertoy
+- visualization-projectm
+- visualization-matrix
+- visualization-goom
+- visualization-pictureit
 - jellyfin
