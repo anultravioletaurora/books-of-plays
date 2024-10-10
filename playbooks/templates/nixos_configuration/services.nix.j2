@@ -42,6 +42,18 @@
     };
 {% endif %}
 
+{% if deck.htpc or htpc.enabled %}
+    avahi = {
+      nssmdns = true;
+      enable = true;
+      publish = {
+        enable = true;
+        userServices = true;
+        domain = true; 
+      };
+    };
+{% endif %}   
+    
 {% if desktop.enabled %}
     flatpak.enable = true;
 {% endif %}
