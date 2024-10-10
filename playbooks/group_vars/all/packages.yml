@@ -12,6 +12,7 @@ packages:
     - fish
     - git
     - nano
+    - nextcloud-client
     - rclone
     - tmux
     - tree
