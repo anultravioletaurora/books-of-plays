@@ -29,7 +29,15 @@
       desktopManager.kodi = {
         enable = true;
         package = pkgs.kodi.withPackages (pkgs: with pkgs; [
+          iagl
+          libretro
+          libretro-genplus
+          libretro-mgba
+          libretro-nestopia
+          libretro-snes9x
           jellyfin
+          joystick
+          sponsorblock
         ]);
       };
       displayManager = {
