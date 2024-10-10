@@ -1,3 +1,13 @@
+- name: Create required directories
+  become: true
+  ansible.builtin.file:
+    path: "{{ directory }}"
+    state: directory
+  loop:
+    - "{{ configuration_cache_dir }}"
+  loop_control:
+    loop_var: directory
+
 - name: Find .nix configuration files for caching
   ansible.builtin.find:
     paths: "{{ configuration_dir }}"
@@ -5,12 +15,6 @@
     patterns: "*.nix"
     recurse: false
   register: nixos_configuration
-
-- name: Create cache directory
-  become: true
-  ansible.builtin.file:
-    path: "{{ configuration_cache_dir }}"
-    state: directory
 
 - name: Cache .nix configuration files for rollback if needed
   become: true
