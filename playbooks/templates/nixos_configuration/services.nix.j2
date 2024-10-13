@@ -1,9 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  # Enable the OpenSSH daemon.
+  {# Always enable the OpenSSH daemon. Without it Ansible can't connect #}
   services = {
     openssh.enable = true;
+
 {% if (sunshine.enabled | default(false)) %}
     sunshine = {
       enable = true;
@@ -58,7 +59,7 @@
   # Enable docker
   virtualisation.docker.enable = true;
   
-{% if packages.gaming is contains('lact') %}
+{% if (deck.enabled or desktop.gaming) and packages.gaming is contains('lact') %}
   systemd.packages = with pkgs; [ lact ];
   systemd.services.lactd.wantedBy = ["multi-user.target"];
 {% endif %}
