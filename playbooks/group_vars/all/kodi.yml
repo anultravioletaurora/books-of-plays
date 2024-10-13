@@ -14,3 +14,4 @@ kodi_pkgs:
 - libretro-mgba
 - libretro-nestopia
 - libretro-snes9x
+- kodi-retroarch-advanced-launchers
