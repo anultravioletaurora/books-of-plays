@@ -36,9 +36,19 @@
           libretro-mgba
           libretro-nestopia
           libretro-snes9x
+          visualization-waveform
+          visualization-starburst
+          visualization-spectrum
+          visualization-shadertoy
+          visualization-projectm
+          visualization-matrix
+          visualization-goom
+          visualization-pictureit
+
           jellyfin
           joystick
           sponsorblock
+          (callPackage ./kodiPkgs/kodi-dolphin.nix {})
         ]);
       };
       displayManager = {
