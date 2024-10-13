@@ -29,27 +29,7 @@
       enable = true;
       desktopManager.kodi = {
         enable = true;
-        package = pkgs.kodi.withPackages (pkgs: with pkgs; [
-          iagl
-          libretro
-          libretro-genplus
-          libretro-mgba
-          libretro-nestopia
-          libretro-snes9x
-          visualization-waveform
-          visualization-starburst
-          visualization-spectrum
-          visualization-shadertoy
-          visualization-projectm
-          visualization-matrix
-          visualization-goom
-          visualization-pictureit
-
-          jellyfin
-          joystick
-          sponsorblock
-          (callPackage ./kodiPkgs/kodi-dolphin.nix {})
-        ]);
+        package = pkgs.kodi.withPackages (pkgs: with pkgs; {{ kodi_pkgs | nix_list }});
       };
       displayManager = {
         autoLogin = {

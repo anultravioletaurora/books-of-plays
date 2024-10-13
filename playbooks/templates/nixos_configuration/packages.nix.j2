@@ -35,6 +35,11 @@
     {{ htpc_pkg_list }}
   {% endif %}
 
+  {% if htpc.enabled %}
+  ]) ++ (with pkgs; [
+    kodi-retroarch-advanced-launchers
+  {% endif %}
+
   {% if install_devtool_packages %}
   ]) ++ (with pkgs; [
     {{ devtool_pkg_list }}

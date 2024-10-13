@@ -8,3 +8,9 @@ kodi_pkgs:
 - visualization-goom
 - visualization-pictureit
 - jellyfin
+- iagl
+- libretro
+- libretro-genplus
+- libretro-mgba
+- libretro-nestopia
+- libretro-snes9x
