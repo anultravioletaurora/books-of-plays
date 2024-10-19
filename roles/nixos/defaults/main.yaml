@@ -9,7 +9,7 @@ htpc:
   enabled: false  
   
 jovian:
-  sha: "0c09zyq4dkqwj3pc8v0sk7q8rbjkm48d70y0bqb8pxhra5yl554x"
+  sha: "0kbqnxpwhrqwijjz94pbi7hj77ki71cc1i6rzq1x81v1wsbrmlhd"
   revision: "bb69165ff372ddbd3228a03513922acd783040e8"
   
 git_repo_dest: "/var/lib" 
