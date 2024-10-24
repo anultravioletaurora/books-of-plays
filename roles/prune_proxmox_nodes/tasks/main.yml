@@ -17,8 +17,8 @@
   block:
     - name: Copy new file
       ansible.builtin.copy: 
-        src: "{{ role_path }}/files/etc/pve/corosync.conf.new"
-        dest: "/etc/pve/corosync.conf"
+        src: "{{ role_path }}/files/etc/pve/corosync.conf"
+        dest: "/etc/pve/corosync.conf.new"
         owner: root
         group: www-data
         mode: 640
