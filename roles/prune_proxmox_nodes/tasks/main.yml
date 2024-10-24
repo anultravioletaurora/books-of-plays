@@ -19,7 +19,7 @@
       become: true
       ansible.builtin.copy: 
         src: "{{ role_path }}/files/etc/pve/corosync.conf"
-        dest: "/etc/pve/corosync.conf.new"
+        dest: "/tmp/pve/corosync.conf"
         owner: root
         group: www-data
         mode: 640
@@ -36,8 +36,8 @@
 
     - name: Move new file into place
       become: true
-      ansible.builtin.copy:
-        src: "/etc/pve/corosync.conf.new"
+      ansible.builtin.shell:
+        src: "/tmp/pve/corosync.conf"
         dest: "/etc/pve/corosync.conf"
         remote_src: true
         owner: root
