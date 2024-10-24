@@ -12,19 +12,31 @@
         name: pveproxy
         state: restarted
         daemon_reload: true
-
+# https://pve.proxmox.com/pve-docs/chapter-pvecm.html#pvecm_edit_corosync_conf
 - name: Apply corosync file
   block:
-    - name: Apply new file
+    - name: Copy new file
       ansible.builtin.copy: 
-        src: "{{ role_path }}/files/etc/pve/corosync.conf"
+        src: "{{ role_path }}/files/etc/pve/corosync.conf.new"
         dest: "/etc/pve/corosync.conf"
         owner: root
         group: www-data
         mode: 640
 
-    - name: Restart corosync service
-      ansible.builtin.systemd_service:
-        name: corosync
-        state: restarted
-        daemon_reload: true
+    - name: Move old file
+      ansible.builtin.copy: 
+        src: "/etc/pve/corosync.conf"
+        dest: "/etc/pve/corosync.conf.bak"
+        remote_src: true
+        owner: root
+        group: www-data
+        mode: 640
+
+    - name: Move new file into place
+      ansible.builtin.copy:
+        src: "/etc/pve/corosync.conf.new"
+        dest: "/etc/pve/corosync.conf"
+        remote_src: true
+        owner: root
+        group: www-data
+        mode: 640
