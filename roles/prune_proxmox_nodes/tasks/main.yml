@@ -36,10 +36,4 @@
 
     - name: Move new file into place
       become: true
-      ansible.builtin.shell:
-        src: "/tmp/pve/corosync.conf"
-        dest: "/etc/pve/corosync.conf"
-        remote_src: true
-        owner: root
-        group: www-data
-        mode: 640
+      ansible.builtin.shell: "mv /tmp/pve/corosync.conf /etc/pve/corosync.conf"
