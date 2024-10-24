@@ -16,7 +16,7 @@
 - name: Apply corosync file
   block:
     - name: Apply new file
-      ansible.builtin.file: 
+      ansible.builtin.copy: 
         src: "{{ role_path }}/files/etc/pve/corosync.conf"
         dest: "/etc/pve/corosync.conf"
         owner: root
