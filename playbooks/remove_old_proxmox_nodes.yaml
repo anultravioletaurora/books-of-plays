@@ -1,4 +1,5 @@
 - name: "Prune old proxmox nodes"
   hosts: "proxmox"
+  serial: 1
   roles:
     - ../roles/prune_proxmox_nodes
