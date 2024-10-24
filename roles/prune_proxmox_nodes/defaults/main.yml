@@ -1,0 +1,4 @@
+pruned_nodes:
+  - themisto
+
+ssh_known_hosts_file: '/etc/ssh/ssh_known_hosts'

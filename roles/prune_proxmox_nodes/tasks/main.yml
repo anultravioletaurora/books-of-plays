@@ -1,0 +1,14 @@
+- name: Remove old nodes
+  block:
+    - name: Loop through and remove old nodes
+      ansible.builtin.include_tasks: remove-old-node.yml
+      loop: "{{ pruned_nodes }}"
+      loop_control:
+        loop_var: "pruned_node"
+      when: pruned_nodes | length > 0
+
+    - name: Restart pveproxy service
+      ansible.builtin.systemd_service:
+        name: pveproxy
+        state: restarted
+        daemon_reload: true

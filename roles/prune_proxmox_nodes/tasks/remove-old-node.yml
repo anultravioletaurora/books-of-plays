@@ -1,0 +1,10 @@
+
+- name: "Remove {{ pruned_node }} folder"
+  become: true
+  ansible.builtin.file:
+    path: "/etc/pve/nodes/{{ pruned_node }}"
+    state: absent
+
+- name: "Remove {{ pruned_node }} known_hosts entry"
+  become: true
+  ansible.builtin.command: "ssh-keygen -f {{ ssh_known_hosts_file | quote }} -R {{ pruned_node | quote }}"

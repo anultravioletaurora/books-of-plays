@@ -1,0 +1,4 @@
+- name: "Prune old proxmox nodes"
+  hosts: "proxmox"
+  roles:
+    - prune_proxmox_nodes
