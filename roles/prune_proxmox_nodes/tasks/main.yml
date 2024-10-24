@@ -15,6 +15,12 @@
 # https://pve.proxmox.com/pve-docs/chapter-pvecm.html#pvecm_edit_corosync_conf
 - name: Apply corosync file
   block:
+    - name: Create /tmp/pve directory
+      ansible.builtin.file:
+        path: "/tmp/pve"
+        state: directory
+        owner: root
+
     - name: Copy new file
       become: true
       ansible.builtin.copy: 
